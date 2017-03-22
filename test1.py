@@ -14,7 +14,7 @@ def generate_tokens():
     """
     text_tokens = []
     # open and read file
-    text = open("frankenstein_shelley.txt")
+    text = open("./corpora/ShelleyMary_Frankenstein_Gutenberg.txt")
     for row in text:
         tokens = word_tokenize(row) # splits string
         # puts everything in lowercase, removes stopwords and punctuation
