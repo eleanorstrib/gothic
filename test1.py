@@ -1,5 +1,8 @@
+"""
+Testing basic concepts & tools before doing our main analysis.
+"""
+
 import string
-# import gensim
 from collections import Counter
 from color_words import cw_raw
 import nltk
@@ -43,15 +46,33 @@ def color_position(tokens, color_word_list):
             word_map[word] = word_map.get(word, []) + [pos]
     return word_map
 
-
-# def word_indices(tokens):
-#     dictionary = gensim.corpora.Dictionary(tokens)
-#     print(dictionary)
+def word_type(tokens):
+    """
+    Classifies the words in the corpus into types (e.g. noun, verb, etc.), then
+    creates and returns lists of the nouns and adjectives.
+    """
+    nouns = []
+    adjectives  = []
+    # seperates tags into tuples in format ( word, tag)
+    tagged_text =  nltk.pos_tag(tokens)
+    # loop through and add to appropriate list
+    for item in tagged_text:
+        if item[1][0] == "N":
+            nouns.append(item[0])
+        if item[1][0] == "J":
+            adjectives.append(item[0])
+    # deduplicate the lists
+    nouns = set(nouns)
+    adjectives = set(adjectives)
+    print(nouns)
+    print (len(nouns))
+    return nouns
 
 def main():
     tokens=generate_tokens()
-    counter(tokens)
-    print(color_position(tokens, cw_raw))
+    # counter(tokens)
+    # color_position(tokens, cw_raw)
+    word_type(tokens)
 
 if __name__ == "__main__":
     main()
