@@ -1,15 +1,14 @@
 """
 Testing basic concepts & tools before doing our main analysis.
 """
-
+import re
 import string
-from collections import Counter
+from collections import defaultdict
 from color_words import cw_raw
-import nltk
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
+import spacy
 
-STOPWORDS = set(nltk.corpus.stopwords.words('english'))
+nlp = spacy.load('en')
+
 
 def generate_tokens():
     """
@@ -18,71 +17,46 @@ def generate_tokens():
     """
     text_tokens = []
     # open and read file
-    text = open("testtext.txt")#./corpora/ShelleyMary_Frankenstein_Gutenberg.txt
+    text = open("./corpora/Radcliffe_TheMysteriesofUdolpho_Gutenberg.txt")#./corpora/ShelleyMary_Frankenstein_Gutenberg.txt
     for row in text:
-        tokens = word_tokenize(row)# splits string
-        # puts everything in lowercase, removes stopwords and punctuation
-        tokens = [token.lower() for token in tokens if token not in STOPWORDS and token not in string.punctuation]
+        row = re.sub("[^a-zA-Z]", " ", row)# removes anything not alpha
+        tokens = nlp(row)# splits string
         # adds row tokens to master list
         text_tokens.extend(tokens)
+    print(text_tokens)
     return text_tokens
 
-def counter(tokens):
-    """
-    This function counts the number of times a word appears in the list of tokens
-    and puts it into a dictionary.
-    """
-    word_count = Counter()
-    for word in tokens:
-        word_count[word] += 1
-    return word_count.most_common()
-
-def color_position(tokens, color_word_list):
-    """
-    Takes the tokenized list, lemmatizes the color words, and finds where in
-    the text they occur.
-    """
-    word_map = {}
-    lemmatizer = WordNetLemmatizer()
-    for pos, word in enumerate(tokens):
-        lemmatized_word = lemmatizer.lemmatize(word)
-        print (lemmatized_word)
-        if lemmatized_word in color_word_list:
-            word_map[lemmatized_word] = word_map.get(lemmatized_word, []) + [pos]
-    print (word_map)
-    return word_map
 
 def word_type(tokens, cw_raw):
     """
-    Classifies the words in the corpus into types (e.g. noun, verb, etc.), then
-    creates and returns lists of the nouns and adjectives.
+    Classifies the words in the corpus into types (e.g. noun, verb, adj), then
+    creates dictionaries for each with positions of the word as the values.
     """
-    nouns = []
-    adjectives  = []
-    verbs = []
+    nouns = defaultdict(list)
+    adjectives  = defaultdict(list)
+    verbs = defaultdict(list)
     # seperates tags into tuples in format ( word, tag)
-    tagged_text =  nltk.pos_tag(tokens)
     # loop through and add to appropriate list
-    for item in tagged_text:
-        if item[1][0] == "N":
-            nouns.append(item[0])
-        if item[1][0] == "J":
-            adjectives.append(item[0])
-        if item[1][0] == "V" and item[1][0] in cw_raw:
-            print(item)
-        else:
-            print('nope')
-    # deduplicate the lists
-    nouns = set(nouns)
-    adjectives = set(adjectives)
-    verbs = set(verbs)
+    for pos, token in enumerate(tokens):
+        l_token = token.lemma_
+        if l_token in cw_raw:
+            if token.pos_ == 'NOUN':
+                nouns[l_token].append(pos)
+            if token.pos_ == 'VERB':
+                verbs[l_token].append(pos)
+            if token.pos_ == 'ADJ':
+                adjectives[l_token].append(pos)
+
+    # # deduplicate the lists
+    print("Color words as nouns:", nouns)
+    print("Color words as adjectives:", adjectives)
+    print("Color words as verbs:", verbs)
     return nouns
+
 
 def main():
     tokens=generate_tokens()
-    counter(tokens)
-    color_position(tokens, cw_raw)
-    # word_type(tokens, cw_raw)
+    word_type(tokens, cw_raw)
 
 if __name__ == "__main__":
     main()
