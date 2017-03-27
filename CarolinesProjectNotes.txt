@@ -1,0 +1,22 @@
+#Research Questions/Goals#
+notes to come
+
+
+
+#Corpora#
+notes to come
+
+
+#Colour Vocabulary#
+
+Method: typed out all the colour word adjectives in the OED's historical thesaurus, under The External World/ ... named colours. http://www.oed.com.ezproxy.library.uvic.ca/view/th/class/81837
+
+First, typed into Excel to create a database listing the year of first use and the taxonomic category (for reference). For now, only adjectives under Named Colours and Variegation are included. Also indicated part of speech.
+
+This list should capture all words used to describe colour, including nouns used as colour adjectives. For instance, "malachite" is a noun but is used as an adjective to describe a type of green.
+
+Q: Should I include pigment names? Some are listed in the OED, but others are not. A list is available here: http://www.visual-arts-cork.com/artist-paints/colour-palette-eighteenth-century.htm
+
+
+
+
