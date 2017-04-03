@@ -9,16 +9,15 @@ import spacy
 
 nlp = spacy.load('en')
 
-def generate_tokens():
+def tokenize_text():
     """
-    This function generates a list of tokens with stopwords and punctuation
-    removed.
+    This function generates a list of tokens with punctuation and spaces removed.
     """
     text_tokens = []
     # open and read file
-    text = open("./corpora/ShelleyMary_Frankenstein_Gutenberg.txt")#./corpora/Radcliffe_TheMysteriesofUdolpho_Gutenberg.txt.
+    text = open("./corpora/ShelleyMary_Frankenstein_Gutenberg.txt")
     for row in text:
-        row = re.sub("[^a-zA-Z]", " ", row)# removes anything not alpha
+        row = re.sub("[^a-zA-Z]", " ", row).lower()# removes anything not alpha
         tokens = nlp(row)# splits string
         # adds row tokens to master list
         text_tokens.extend(tokens)
@@ -38,7 +37,6 @@ def word_type(tokens, color_words):
     for pos, token in enumerate(tokens):
         l_token = token.lemma_
         if l_token in color_words:
-            print (token)
             if token.pos_ == 'NOUN':
                 nouns.append((l_token, pos))
             if token.pos_ == 'VERB':
@@ -49,11 +47,12 @@ def word_type(tokens, color_words):
 
 
 def main():
-    tokens = generate_tokens()
+    tokens = tokenize_text()
+    print(tokens)
     nouns, adjectives, verbs = word_type(tokens, color_words)
-    print("Color words as nouns:", nouns)
-    print("Color words as adjectives:", adjectives)
-    print("Color words as verbs:", verbs)
+    # print("Color words as nouns:", nouns)
+    # print("Color words as adjectives:", adjectives)
+    # print("Color words as verbs:", verbs)
 
 if __name__ == "__main__":
     main()
