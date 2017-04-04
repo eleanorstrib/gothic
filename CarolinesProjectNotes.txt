@@ -2,11 +2,34 @@
 
 - How is colour used in nineteenth-century Gothic literature (fiction)? And to what effect?
  -This project is part of a larger investigation into the Gothic aesthetic, a notion that is often referred to in literary criticism, but remains ill-defined. Critics take a "you know it when you see it" approach to the Gothic; this project seeks to articulate what "it" is.
+ - What does the "palette" for Gothic lit look like? What about the palette for individual texts? How does this palette compare with visual arts from the same period?
+ - How does the use of colour change throughout a text? How well can we predict this from the plot and other narrative features?
+ - What are some examples of visual art that we can draw upon? Radcliffe refers to Lorrain and Rosa explicitly (need to double check). What about Shelley--Fuseli? Wilde--art from the Aesthetic Movement: Whistler, DGRossetti, Aubrey Beardsley.
+ - How can this work be scaled/extrapolated from/built upon in other contexts?
+ - What colour words are used in the corpus/corpora (named colours in the OED)
+ - How are colours used otherwise in our corpus?
+ - Is there a pattern across time, e.g., from C18 to C20?
+ - Is there a pattern across authors, e.g., Shelley uses a lot of blue v. Wilde who uses a lot of red?
+ - How does the use of colour we observe reflect the thematic concerns of the texts?
+ - What kinds of arguments/interpretations can we make based on our analysis?
+ - What are some best practices for this kind of analysis?
+ - What tools did we use and why? What tools do we need but don't have? What resources? (e.g., a corpus of Gothic texts, a list of colour words)
+ - Why is this project important? What does it contribute to Gothic studies? To DH studies?
+ 
+ 
+ ##Predictions##
+ - In Udolpho, the palette will vary with the landscape. In La Valee (about the first quarter or third of the novel), I'd expect greens, blues, sunset colours, reflecting the landscape. I'd expect this section to be most like a Lorrain or Rosa painting. In the middle third, when Emily travels to Italy, I'd expect a shadow to fall over the text, particularly when they're at the castle. I'd expect a return to natural colours in the last section, but with a dark edge.
+ 
+ - In Frankenstein, I'd expect lots of blacks, greys, and reds in relation to Victor and his creature. I'd also expect a lot of white/ice/snow colours in the arctic sections. I would be surprised to see the same natural palette as in Radcliffe. Perhaps Fuseli would be a better visual comparison here? 
  
 - Justification: this project identifies/explores links with the visual arts and visuality, and has implications for adaptation studies (e.g., by comparing colour in *Frankenstein* or *Dracula* v. film adaptations)
 
 ##Case Study/Inspiration for the Project##
 Ann Radcliffe is well known as one of the founders of the Gothic literary mode, and is especially associated with "terror Gothic" (v. the "horror Gothic" of Matthew Lewis). Radcliffe explicitly associates the landscapes she describes in her novels with the visual arts, specifically the picturesque landscape paintings of Claude Lorrain and Salvatore Rosa. This project asks, to what extend is the relationship between these paintings and her fiction evident in her use of colour? To what extent does a Radcliffean world "look" like a picturesque painting?
+
+- Other case studies: Mary Shelley's Frankenstein (1818), Oscar Wilde's The Picture of Dorian Gray (1891).
+
+
 
 
 #Scope#
