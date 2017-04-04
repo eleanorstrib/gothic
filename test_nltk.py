@@ -3,7 +3,7 @@ Testing basic concepts & tools before doing our main analysis.
 """
 
 import string
-from color_words import cw_raw
+from oed_color import color_words
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -78,7 +78,9 @@ def main():
     tokens = tokenize_text()
     # word_count(tokens)
     nouns, adjectives, verbs = word_type(tokens)
-    print("filtered list", color_filter(verbs, cw_raw))
+    print("nouns", color_filter(nouns, color_words))
+    print("adjectives", color_filter(adjectives, color_words))
+    print("verbs", color_filter(verbs, color_words))
 
 if __name__ == "__main__":
     main()
