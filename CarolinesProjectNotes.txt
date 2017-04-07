@@ -48,6 +48,9 @@ Ann Radcliffe is well known as one of the founders of the Gothic literary mode, 
 
 - This research is largely exploratory. We are looking for patterns within texts (e.g., changes in how colour is used from the beginning to the end of a novel) as well as patterns in the corpus (e.g., trends in colour usage across time, between authors, related to theme, category of horror/terror). Some research has been done into the connection between the Gothic and visual culture, but to our knowledge the topic of colour specifically has yet to be explored. [[Caroline needs to verify this]]
 
+##Text Preparation##
+- texts are copied from the source and pasted into Text Wrangler. I delete any copyright notice and metadata, leaving just the text and the title info. If contents are listed, I delete them unless they include chapter titles. Note that we are not proofing the text at all, so we're trusting that the content is reliable.
+
 
 #Corpus#
 - The sample corpus was derived from a list of Gothic texts compiled from a number of sources, including Rictor Norton's *Gothic Readings: The First Wave, 1764–1840*, Ann Tracy's *The Gothic Novel, 1790–1830*, and the indexes from a number of critical works (e.g., Clery's *The Rise of Supernatural Fiction*). The goal is to create a comprehensive database of C19 Gothic texts. For now, the database includes author, title, date, mode (fiction, poem, drama) and other bibliographic info.
