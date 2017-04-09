@@ -2,14 +2,14 @@ from django.db import models
 from django.contrib.postgres.fields import JSONField
 
 
-class Novel(Models.model):
-    GENRE CHOICES = (
-        (BALLAD, 'Ballad'),
-        (TRAGEDY, 'Tragedy'),
+class Corpus(models.Model):
+    GENRE_CHOICES = (
+        ('Ballad', 'Ballad'),
+        ('Tragedy', 'Tragedy'),
     )
     MODE_CHOICES = (
         ('Drama', 'Drama'),
-        ('Fragment', 'Fragment')
+        ('Fragment', 'Fragment'),
         ('Novel', 'Novel'),
         ('Poetry', 'Poetry'),
         ('Review', 'Review'),
@@ -26,7 +26,7 @@ class Novel(Models.model):
         ('German', 'German'),
     )
     PERIOD_CHOICES = (
-        ('Pre-Romantic', 'Pre-Romantic')
+        ('Pre-Romantic', 'Pre-Romantic'),
         ('Romantic', 'Romantic'),
         ('Victorian', 'Victorian'),
     )
@@ -35,30 +35,30 @@ class Novel(Models.model):
         ('Influence', 'Influence'),
         ('Peripheral', 'Peripheral'),
     )
-    title = models.Charfield(max_length=150)
-    author = models.Charfield(max_length=50)
-    year = models.IntegerField(max_length=4)
-    period = models.Charfield(choices=PERIOD_CHOICES)
-    mode = models.Charfield(choices=MODE_CHOICES)
-    genre = models.Charfield(choices=GENRE_CHOICES)
-    nationality = models.Charfield(choices=NATIONALITY_CHOICES)
-    pseudonym = models.Charfield(max_length=75, null=True)
-    role = models.Charfield(choices=ROLE_CHOICES)
-    authority = models.Charfield(max_length=150, null=True)
-    filename = models.Charfield(max_length=150)
+    title = models.CharField(max_length=150)
+    author = models.CharField(max_length=50)
+    year = models.IntegerField()
+    period = models.CharField(choices=PERIOD_CHOICES, max_length=30)
+    mode = models.CharField(choices=MODE_CHOICES, max_length=30)
+    genre = models.CharField(choices=GENRE_CHOICES, max_length=30)
+    nationality = models.CharField(choices=NATIONALITY_CHOICES, max_length=30)
+    pseudonym = models.CharField(max_length=75, null=True)
+    role = models.CharField(choices=ROLE_CHOICES, max_length=30)
+    authority = models.CharField(max_length=150, null=True)
+    filename = models.CharField(max_length=150)
     full_text_source = models.URLField(null=True)
-    illustrator = models.Charfield(max_length=75, null=True)
-    translator = models.Charfield(max_length=75, null=True)
+    illustrator = models.CharField(max_length=75, null=True)
+    translator = models.CharField(max_length=75, null=True)
     ebook_source = models.URLField()
     wikipedia = models.URLField(null=True)
-    notes = models.Charfield(max_length=250, null=True)
-    etext_publisher = models.Charfield(max_length=75, null=True)
-    ebook_num = models.Charfield(max_length=15)
-    etext_pub_date = models.IntegerField(max_length=4)
+    notes = models.CharField(max_length=250, null=True)
+    etext_publisher = models.CharField(max_length=75, null=True)
+    ebook_num = models.CharField(max_length=15)
+    etext_pub_date = models.DateField(null=True)
     date_accessed = models.DateField()
-    editor = models.Charfield(max_length=50)
-    edition = models.IntegerField(max_length=4)
-    date_added = models.DateField(auto_now=True, auto_now_add=True)
+    editor = models.CharField(max_length=50)
+    edition = models.IntegerField()
+    date_added = models.DateField(auto_now_add=True)
     cover_art = models.URLField(null=True)
     color_data = JSONField()
 

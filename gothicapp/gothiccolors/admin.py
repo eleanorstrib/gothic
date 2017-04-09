@@ -1,3 +1,4 @@
 from django.contrib import admin
+from gothiccolors.models import Corpus
 
-# Register your models here.
+admin.site.register(Corpus)
