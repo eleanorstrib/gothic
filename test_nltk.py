@@ -5,6 +5,7 @@ Testing basic concepts & tools before doing our main analysis.
 import string
 from oed_color import color_words
 import nltk
+from collections import defaultdict
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
@@ -73,14 +74,24 @@ def color_filter(typed_list, color_word_list):
             filtered.append(item)
     return filtered
 
+def collapse_colors(word_list):
+    """
+    Removes position, returns colors with count of occurrances.
+    """
+    color_dict_collapsed = {}
+    for item in word_list:
+        color_dict_collapsed[item[0]] = color_dict_collapsed.get(item[0], 0) + 1
+    return color_dict_collapsed
+
 
 def main():
     tokens = tokenize_text()
     # word_count(tokens)
     nouns, adjectives, verbs = word_type(tokens)
-    print("nouns", color_filter(nouns, color_words))
-    print("adjectives", color_filter(adjectives, color_words))
-    print("verbs", color_filter(verbs, color_words))
+    # print("nouns", color_filter(nouns, color_words))
+    # print("adjectives", color_filter(adjectives, color_words))
+    # print("verbs", color_filter(verbs, color_words))
+    print(collapse_colors(color_filter(adjectives, color_words)))
 
 if __name__ == "__main__":
     main()
