@@ -73,7 +73,6 @@ def color_filter(typed_list, color_word_list):
             filtered.append(item)
     return filtered
 
-
 def main():
     tokens = tokenize_text()
     # word_count(tokens)
