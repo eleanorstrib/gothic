@@ -39,6 +39,9 @@ Ann Radcliffe is well known as one of the founders of the Gothic literary mode, 
 
 - Another possible case study: Oscar Wilde's *The Picture of Dorian Gray* (1890), since it involves a haunted painting. How does it align with fin-de-siecle visual arts?
 
+- The db includes works from Britain and western Europe, but in the next version, I might want to make sure that all the nonEnglish texts were available in England or in translation?
+
+
 
 #Methodology#
 
@@ -60,6 +63,16 @@ Ann Radcliffe is well known as one of the founders of the Gothic literary mode, 
 - The texts within the corpus were sourced from Project Gutenberg, Project Gutenberg Australia, the Oxford Text Archive, UPenn, British Women Romantic Writers. They were found mainly by googling. The corpus is limited to the texts that we could access in a relaible plain text format.
 
 - Many of the titles in the database are not available in a reliable plain text format. Many are available as page images through Internet Archive and Hathi Trust, but the plain text versions on those sites are uncorrected, and thus unreliable and unusable for our purposes. This points to a need for more reliable plain text files for similar research projects, along with the comprehensive database.
+
+- The database is still a work in progress; many of the fields are blank because the information is unknown. Many of the lesser-known texts exist in only one copy in the Corvey Library Collection, for example, and are not digitized or available electronically. Many authors are obscure, and even their nationality (and sometimes their true identity) remains unknown.
+
+- Work to be done on the db: some texts identified as novels may actually be chapbooks, e.g., Koenigsmark the Robber by Sarret; listed as Tracy as a "Gothic Novel," but Norton calls it a chapbook. NEED: list of Gothic chapbooks. For the purpose of the Gothic Colours project, this isn't really an issue.
+
+- Some more texts should be added:
+Conrad, Heart of Darkness
+More by Margaret Elephant
+More by R L Stevenson
+More from The Gothic Encyclopedia, ed. Snodgrass
 
 
 #Colour Vocabulary#
