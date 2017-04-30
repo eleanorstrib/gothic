@@ -50,17 +50,17 @@ class Corpus(models.Model):
     illustrator = models.CharField(max_length=75, null=True)
     translator = models.CharField(max_length=75, null=True)
     ebook_source = models.URLField()
-    wikipedia = models.URLField(null=True)
+    more_info = models.URLField(null=True)
     notes = models.CharField(max_length=250, null=True)
     etext_publisher = models.CharField(max_length=75, null=True)
     ebook_num = models.CharField(max_length=15)
     etext_pub_date = models.DateField(null=True)
     date_accessed = models.DateField()
     editor = models.CharField(max_length=50)
-    edition = models.IntegerField()
+    edition = models.IntegerField(null=True)
     date_added = models.DateField(auto_now_add=True)
     cover_art = models.URLField(null=True)
-    color_data = JSONField()
+    color_data = JSONField(null=True)
 
     def __str__(self):
         return self.title
