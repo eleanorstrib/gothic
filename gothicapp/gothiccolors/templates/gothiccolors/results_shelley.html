@@ -2,6 +2,52 @@
 {% load i18n %}
 
 {% block content %}
+<style> canvas#polar-chart {width: 80%;
+  margin: 15px auto;} </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<div id="container"><canvas id="polar-chart" ></canvas></div>
+<script>
+var ctx = document.getElementById("polar-chart");
+var data = {
+    datasets: [{
+        data: [
+            11,
+            16,
+            7,
+            3,
+            14
+        ],
+        backgroundColor: [
+            "#FF6384",
+            "#4BC0C0",
+            "#FFCE56",
+            "#E7E9ED",
+            "#36A2EB"
+        ],
+        label: {{ data | length }}// for legend
+    }],
+    labels: [
+      {{ data | length }},
+        "Green",
+        "Yellow",
+        "Grey",
+        "Blue"
+    ]
+};
+console.log(data);
+new Chart(ctx, {
+    data: data,
+    type: 'polarArea',
+    options: {
+elements: {
+  arc: {
+      borderColor: "#000000"
+  }
+}
+}
+});
+
+</script>
   Results <br />
   {{ data | length }} works for Mary Shelley
   {% for work in data %}
@@ -15,11 +61,10 @@
           Period: {{ work.period }}
         </td>
         <td>
-          Mode: {{ work.mode }}
+
         </td>
       </tr>
     </table>
   </div>
   {% endfor %}
-
 {% endblock %}

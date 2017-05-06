@@ -64,3 +64,14 @@ class Corpus(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Color(models.Model):
+    name = models.CharField(max_length=40)
+    year = models.IntegerField(null=True)
+    family = models.CharField(max_length=100)
+    hex_name = models.CharField(max_length=75)
+    url_value = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
