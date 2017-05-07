@@ -38,7 +38,8 @@ for row in data_reader:
         corpus.date_accessed = row[24]
         corpus.editor = row[25]
         corpus.edition = row[26]
-        corpus.date_added = datetime.now()
+        corpus.color_list = row[27]
+        corpus.color_dict = row[28]
         corpus.save()
         print("this record was saved: ", corpus.title)
     else:
