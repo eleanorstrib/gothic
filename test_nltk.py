@@ -17,7 +17,7 @@ def tokenize_text():
     """
     text_tokens = []
     # open and read file
-    text = open("./corpora/ShelleyMary_Frankenstein_Gutenberg.txt")
+    text = open("./gothicapp/corpora/Bronte_JaneEyre_Gutenberg.txt")
     for row in text:
         tokens = word_tokenize(row)# splits string
         # puts everything in lowercase, removes punctuation
@@ -74,6 +74,7 @@ def color_filter(typed_list, color_word_list):
             filtered.append(item)
     return filtered
 
+
 def collapse_colors(word_list):
     """
     Removes position, returns colors with count of occurrances.
@@ -86,11 +87,9 @@ def collapse_colors(word_list):
 
 def main():
     tokens = tokenize_text()
-    # word_count(tokens)
+    word_count(tokens)
     nouns, adjectives, verbs = word_type(tokens)
-    # print("nouns", color_filter(nouns, color_words))
-    # print("adjectives", color_filter(adjectives, color_words))
-    # print("verbs", color_filter(verbs, color_words))
+    color_adj = color_filter(adjectives, color_words)
     print(collapse_colors(color_filter(adjectives, color_words)))
 
 if __name__ == "__main__":
