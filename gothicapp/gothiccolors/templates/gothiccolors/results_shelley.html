@@ -2,7 +2,12 @@
 {% load i18n %}
 
 {% block content %}
-<style> canvas#polar-chart {width: 80%;
+<style> .color-square {
+	width: 10px;
+	height: 10px;
+	background: red;
+}
+canvas#polar-chart {width: 80%;
   margin: 15px auto;} </style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 <div id="container"><canvas id="polar-chart" ></canvas></div>
@@ -58,10 +63,13 @@ elements: {
           {{ work.title }} ({{ work.year }})
         </td>
         <td>
-          Period: {{ work.period }}
+
         </td>
         <td>
-
+            {% for color in work.color_list %}
+              {{ color }}
+            {% endfor %}
+            <!-- <div class="color-square"></div> -->
         </td>
       </tr>
     </table>

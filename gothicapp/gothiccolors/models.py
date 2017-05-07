@@ -60,8 +60,8 @@ class Corpus(models.Model):
     edition = models.CharField(null=True, blank=True,max_length=300)
     date_added = models.DateField(auto_now_add=True)
     cover_art = models.URLField(null=True, blank=True)
-    color_list = models.CharField(null=True, blank=True, max_length=15000)
-    color_dict = models.CharField(null=True, blank=True, max_length=15000)
+    color_list = JSONField(null=True, blank=True)
+    color_dict = JSONField(null=True, blank=True)
 
     def __str__(self):
         return self.title
