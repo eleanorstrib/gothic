@@ -5,7 +5,7 @@
 <style> .color-square {
 	width: 10px;
 	height: 10px;
-	background: red;
+	float: left;
 }
 canvas#polar-chart {width: 80%;
   margin: 15px auto;} </style>
@@ -63,13 +63,13 @@ elements: {
           {{ work.title }} ({{ work.year }})
         </td>
         <td>
-
         </td>
         <td>
-            {% for color in work.color_list %}
-              {{ color }}
-            {% endfor %}
-            <!-- <div class="color-square"></div> -->
+					{% for item in colors %}
+						<div class="color-square" style="background:{{item}}"></div>
+
+					{% endfor %}
+
         </td>
       </tr>
     </table>

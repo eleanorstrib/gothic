@@ -12,11 +12,12 @@ def results_shelley(request):
     for x in range(0, len(colors)):
         color_names.append(colors[x].name)
     corpora = Corpus.objects.filter(author="Shelley, Mary")
-    for corpus in corpora:
-        color_dict_convert = corpus.color_dict.replace("'", "\"")
-        color_dict_update = json.loads(color_dict_convert)
-        corpus.color_dict = color_dict_update
-        print(type(corpus.color_dict))
-        print(type(color_dict_update))
+    temp_list = ['snow', 'straw', 'blue', 'natural', 'natural', 'natural', 'natural', 'white', 'natural', 'natural', 'natural', 'natural', 'natural', 'natural', 'black', 'natural', 'natural', 'natural', 'natural', 'natural', 'natural', 'natural', 'yellow', 'yellow', 'black', 'pearly', 'black', 'livid', 'yellow', 'white', 'black', 'blue', 'blue', 'rosy', 'natural', 'natural', 'natural', 'verdant', 'black', 'blue', 'pitchy', 'black', 'white', 'snowy', 'imperial', 'natural', 'white', 'white', 'white', 'black', 'black', 'raven', 'black', 'black', 'green', 'red', 'green', 'straw', 'blue', 'golden', 'black', 'green', 'black', 'verdant', 'white', 'natural', 'natural', 'green', 'white', 'natural', 'stony', 'angry', 'black', 'black', 'black', 'blue', 'black', 'yellow', 'angry', 'green', 'blue', 'black', 'white', 'blue', 'sunny', 'wan', 'white']
+    colors = []
+    for item in temp_list:
+        data = Color.objects.filter(name=item)
+        colors.append(data[0].hex_name)
+    print (colors)
 
-    return render(request, 'gothiccolors/results_shelley.html', {'data': corpora})
+
+    return render(request, 'gothiccolors/results_shelley.html', {'data': corpora, 'colors': colors})

@@ -3,7 +3,7 @@ import json
 from django.conf import settings
 from datetime import datetime
 import csv
-data_reader = csv.reader(open('./gothic_texts.csv'), delimiter=",", quotechar='"')
+data_reader = csv.reader(open('./gothic_texts.csv'), delimiter=",")
 
 import sys, os
 sys.path.append('/Users/eleanorstrib/Documents/dev_projects/gothic_colors/gothicapp/')
@@ -39,10 +39,16 @@ for row in data_reader:
         corpus.date_accessed = row[24]
         corpus.editor = row[25]
         corpus.edition = row[26]
-        corpus.color_list = row[27].replace("'", "\"")
-        corpus.color_dict = row[28].replace("'", "\"")
-        corpus.save()
-        print("this record was saved: ", corpus.title)
+        corpus.color_list = row[27].replace("''", "\"")
+        # corpus.color_list = corpus.color_list.split()
+        for item in corpus.color_list:
+            item=(item[1:-2])
+        print (corpus.color_list)
+        print(type(corpus.color_list))
+        corpus.color_dict = row[28]
+
+        # corpus.save()
+        # print("this record was saved: ", corpus.title)
     else:
         print('skipping row')
 print("done")
