@@ -8,6 +8,7 @@ dill==0.2.6
 Django==1.11
 django-autocomplete-light==3.2.7
 gensim==0.13.4.1
+gunicorn==19.7.1
 murmurhash==0.26.4
 nltk==3.2.2
 node==0.9.18.1
