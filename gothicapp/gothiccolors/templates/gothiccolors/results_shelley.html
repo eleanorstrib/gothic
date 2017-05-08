@@ -59,15 +59,20 @@ elements: {
   <div class="container">
     <table class="table">
       <tr>
-        <td>
-          {{ work.name }} ({{ work.year }}) <br />
+				<td class="col-md-4 col-xs-3">
+					{{ work.name }} ({{ work.year }}) <br />
 					{{ work.mode }} | {{ work.role }} | {{ work.nationality}}
+				</td>
+        <td class="col-md-4 col-xs-3">
+
         </td>
         <td>
         </td>
-        <td>
+        <td class="col-md-4 col-xs-6">
 					{% for item in work.color_list %}
+						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }} | Color family: {{ item.2 }}">
 						<div class="color-square" style="background:{{ item.1 }}"></div>
+						</a>
 					{% endfor %}
         </td>
       </tr>
@@ -75,4 +80,7 @@ elements: {
   </div>
 
   {% endfor %}
+	<!--jQuery-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});</script>
 {% endblock %}

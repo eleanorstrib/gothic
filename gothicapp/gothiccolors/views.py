@@ -8,7 +8,7 @@ def home(request):
 
 def results_shelley(request):
     colors = Color.objects.all()
-    corpora = Corpus.objects.filter(author="Shelley, Mary")
+    corpora = Corpus.objects.filter(author="Stoker, Bram")
     data = []
     for i in range(0, len(corpora)):
         title = corpora[i].title
@@ -21,6 +21,7 @@ def results_shelley(request):
         title['mode'] = corpora[i].mode
         title['nationality'] = corpora[i].nationality
         title['role'] = corpora[i].role
+        title['color_dict'] = json.loads(corpora[i].color_dict)
         title['color_list'] = []
 
         data_list = []
