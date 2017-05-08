@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<style> .color-square {
+	width: 10px;
+	height: 10px;
+	float: left;
+}
+canvas#polar-chart {width: 80%;
+  margin: 15px auto;} </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+
+<script>
+var ctx = document.getElementById("polar-chart");
+var data = {
+    datasets: [{
+        data: [
+            11,
+            16,
+            7,
+            3,
+            14
+        ],
+        backgroundColor: [
+            "#FF6384",
+            "#4BC0C0",
+            "#FFCE56",
+            "#E7E9ED",
+            "#36A2EB"
+        ],
+        label: {{ data | length }}// for legend
+    }],
+    labels: [
+      {{ data | length }},
+        "Green",
+        "Yellow",
+        "Grey",
+        "Blue"
+    ]
+};
+console.log(data);
+new Chart(ctx, {
+    data: data,
+    type: 'polarArea',
+    options: {
+elements: {
+  arc: {
+      borderColor: "#000000"
+  }
+}
+}
+});
+
+</script>
+  {{ data | length }} Results <br />
+  {% for work in data %}
+  <div class="container">
+    <table class="table">
+      <tr>
+				<td class="col-md-4 col-xs-3">
+					{{ work.name }} ({{ work.year }}) <br />
+					by {{ work.author }}<br />
+					{{ work.mode }} | {{ work.role }} | {{ work.nationality}}
+				</td>
+        <td class="col-md-4 col-xs-3">
+					{% for key, value in work.color_dict.items %}
+					{{ key }} ({{ value }})  
+					{% endfor %}
+        </td>
+        <td>
+        </td>
+        <td class="col-md-4 col-xs-6">
+					{% for item in work.color_list %}
+						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }} | Color family: {{ item.2 }}">
+						<div class="color-square" style="background:{{ item.1 }}"></div>
+						</a>
+					{% endfor %}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  {% endfor %}
+	<div id="container"><canvas id="polar-chart" ></canvas></div>
+	<!--jQuery-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});</script>
+{% endblock %}
