@@ -56,24 +56,23 @@ elements: {
   Results <br />
   {{ data | length }} works for Mary Shelley
   {% for work in data %}
-		{% with title=work.title %}
   <div class="container">
     <table class="table">
       <tr>
         <td>
-          {{ title }} ({{ work.year }})
+          {{ work.name }} ({{ work.year }}) <br />
+					{{ work.mode }} | {{ work.role }} | {{ work.nationality}}
         </td>
         <td>
         </td>
         <td>
-
-						{{ colors.Matilda }}
-						<!-- <div class="color-square" style="background:{{color.hex_name}}"></div> -->
-
+					{% for item in work.color_list %}
+						<div class="color-square" style="background:{{ item.1 }}"></div>
+					{% endfor %}
         </td>
       </tr>
     </table>
   </div>
-		{% endwith %}
+
   {% endfor %}
 {% endblock %}
