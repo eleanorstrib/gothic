@@ -6,9 +6,9 @@ from .models import Corpus, Color
 def home(request):
     return render(request, 'gothiccolors/home.html', {})
 
-def results_shelley(request):
+def results(request):
     colors = Color.objects.all()
-    corpora = Corpus.objects.filter(author="Stoker, Bram")
+    corpora = Corpus.objects.all()
     data = []
     for i in range(0, len(corpora)):
         title = corpora[i].title
@@ -25,13 +25,16 @@ def results_shelley(request):
         title['color_list'] = []
 
         data_list = []
-        for color in color_list:
-            color_data = colors.filter(name=color)
-            hex_name = color_data.first().hex_name
-            family = color_data.first().family
-            data_list.append((color, hex_name, family))
+        try:
+            for color in color_list:
+                color_data = colors.filter(name=color)
+                hex_name = color_data.first().hex_name
+                family = color_data.first().family
+                data_list.append((color, hex_name, family))
+        except:
+            print("problem for ", corpora[i].title)
 
         title['color_list'] = data_list
         data.append(title)
 
-    return render(request, 'gothiccolors/results_shelley.html', {'data': data})
+    return render(request, 'gothiccolors/results.html', {'data': data})
