@@ -60,7 +60,19 @@ class Corpus(models.Model):
     edition = models.CharField(null=True, blank=True,max_length=300)
     date_added = models.DateField(auto_now_add=True)
     cover_art = models.URLField(null=True, blank=True)
-    color_data = JSONField(null=True, blank=True)
+    color_list = JSONField(null=True, blank=True)
+    color_dict = JSONField(null=True, blank=True)
 
     def __str__(self):
         return self.title
+
+
+class Color(models.Model):
+    name = models.CharField(max_length=40)
+    year = models.IntegerField(null=True)
+    family = models.CharField(max_length=100)
+    hex_name = models.CharField(max_length=75)
+    url_value = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name

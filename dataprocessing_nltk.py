@@ -1,5 +1,5 @@
 """
-Testing basic concepts & tools before doing our main analysis.
+Modifying test code to run, populate database
 """
 
 import string
@@ -17,7 +17,7 @@ def tokenize_text():
     """
     text_tokens = []
     # open and read file
-    text = open("./gothicapp/corpora/Bronte_JaneEyre_Gutenberg.txt")
+    text = open("./gothicapp/corpora/Radcliffe_TheMysteriesOfUdolpho_Gutenberg.txt")
     for row in text:
         tokens = word_tokenize(row)# splits string
         # puts everything in lowercase, removes punctuation
@@ -74,6 +74,15 @@ def color_filter(typed_list, color_word_list):
             filtered.append(item)
     return filtered
 
+def color_list(color_adjectives):
+    """
+    Returns an ordered list of color words
+    """
+    word_only_list = []
+    for item in color_adjectives:
+        word_only_list.append(item[0])
+    return word_only_list
+
 
 def collapse_colors(word_list):
     """
@@ -90,6 +99,7 @@ def main():
     word_count(tokens)
     nouns, adjectives, verbs = word_type(tokens)
     color_adj = color_filter(adjectives, color_words)
+    print(color_list(color_adj))
     print(collapse_colors(color_filter(adjectives, color_words)))
 
 if __name__ == "__main__":
