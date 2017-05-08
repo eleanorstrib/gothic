@@ -8,16 +8,41 @@ def home(request):
 
 def results_shelley(request):
     colors = Color.objects.all()
-    color_names=[]
-    for x in range(0, len(colors)):
-        color_names.append(colors[x].name)
     corpora = Corpus.objects.filter(author="Shelley, Mary")
-    temp_list = ['snow', 'straw', 'blue', 'natural', 'natural', 'natural', 'natural', 'white', 'natural', 'natural', 'natural', 'natural', 'natural', 'natural', 'black', 'natural', 'natural', 'natural', 'natural', 'natural', 'natural', 'natural', 'yellow', 'yellow', 'black', 'pearly', 'black', 'livid', 'yellow', 'white', 'black', 'blue', 'blue', 'rosy', 'natural', 'natural', 'natural', 'verdant', 'black', 'blue', 'pitchy', 'black', 'white', 'snowy', 'imperial', 'natural', 'white', 'white', 'white', 'black', 'black', 'raven', 'black', 'black', 'green', 'red', 'green', 'straw', 'blue', 'golden', 'black', 'green', 'black', 'verdant', 'white', 'natural', 'natural', 'green', 'white', 'natural', 'stony', 'angry', 'black', 'black', 'black', 'blue', 'black', 'yellow', 'angry', 'green', 'blue', 'black', 'white', 'blue', 'sunny', 'wan', 'white']
-    colors = []
-    for item in temp_list:
-        data = Color.objects.filter(name=item)
-        colors.append(data[0].hex_name)
-    print (colors)
+    data = []
+    for i in range(0, len(corpora)):
+        title = corpora[i].title
+        color_list = json.loads(corpora[i].color_list)
+        print(type(color_list))
+        title = {}
+        title['author'] = corpora[i].author
+        title['year'] = corpora[i].year
+        title['mode'] = corpora[i].mode
+        title['nationality'] = corpora[i].nationality
+        title['genre'] = corpora[i].genre
+        title['role'] = corpora[i].role
+        title['color_list'] = []
 
+        for color in color_list:
+            color_data = colors.filter(name=color)
+            hex_name = color_data.first().hex_name
+            family = color_data.first().family
+            title['color_list'] = title['color_list'].append((color, hex_name, family))
+        print (title)
+    # color_data = {}
+    # for i in range(0, len(corpora)):
+    #     title = corpora[i].title
+    #     print(title)
+    #     color_data[title] = {}
+    #     data = json.loads(corpora[i].color_list) # list of ordered color words
+    #     for color in data:
+    #
 
-    return render(request, 'gothiccolors/results_shelley.html', {'data': corpora, 'colors': colors})
+    #
+    #         color_data[title][color] = [color, hex_name, year]
+    #         print(title, color_data[title])
+            # # sub dicts for each title: keys are color words, values are object from db
+            # color_data[title][color] = [hex_name]
+            # print(title, color, color_data[title][color])
+
+    return render(request, 'gothiccolors/results_shelley.html', {'data': data})
