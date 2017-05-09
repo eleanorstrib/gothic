@@ -95,6 +95,30 @@ More from The Gothic Encyclopedia, ed. Snodgrass
 
 Q: Should I include pigment names? Some are listed in the OED, but others are not. A list is available here: http://www.visual-arts-cork.com/artist-paints/colour-palette-eighteenth-century.htm
 
+#Results
 
+We need to delete "natural" from the color vocab, since it hardly ever (never?) is used as a color word in our corpus and is skewing the results. Same with "angry," e.g., in Smith's Emmeline, and "imperial," e.g., in DeQuincey's Klosterheim.
 
+Walpole's The Castle of Otranto is generally considered the first Gothic novel, so it's worth looking at in detail. It's dominated by black: black (8) and sable (2). 
 
+Clara Reeve's The Old English Baron is a rewriting of Otranto, but its colors are quite different: there aren't as many mentions overall (the texts are roughly the same length), and black appears only once.
+
+The prominence of black seems consistent, e.g., in Vathek, The Ghost-Seer. Cowley's "Invocation to Horror" uses black colors only.
+
+What might surprise us in the range of the palettes: they're not just black.
+
+Caleb Williams: some false hits, e.g., "horse-flesh", "elephant". The prominence of red is a bit surprising. It usually refers to temperament--optimism and hope. The novel is about how Caleb is persecuted by his former employer, Falkland, when Caleb tries to expose Falkland as a murderer. It's by no means a hopeful novel.
+
+Radcliffe's The Mysteries of Udolpho is a keystone text. Given Radcliffe's interest in landscapes, the range of the palette isn't surprising, and there does seem to be a pattern of natural colors, black/grey, then natural colors again, which would make sense given the events of the novel--the middle section is when Emily is imprisoned in the castle Udolpho by the evil Signor Montoni.
+
+The Monk, by Matthew Gregory Lewis, is another keystone text (like Udolpho). I'd expect it to be very black and red, since it's about sin and sexual desire. In fact, it's largely white. It makes sense that its palette is much less green and blue than Udolpho's, given the urban setting.
+
+Shelley's Frankenstein: need to delete "natural". When we do, black and white dominate. Not sure what to make of this. It's not as colourful as I'd expect, actually. Compared with Shelley's other works, it's quite drab.
+
+Polidori's The Vampyre: no red words! This is surprising, since it's one of the first modern vampire tales.
+
+Stoker's Dracula: lots of red! Interesting to compare with Polidori.
+
+Jacobs's The Monkey's Paw refers to only one colour, white, and it does that 25 times! This is because all the main characters have the last name White. This is only a color word, though--it doesn't refer to anything else in English, so should we leave it as is, even though it's not being used as a reference to a color explicitly?
+
+Also worth noting that most of the color words are abstract, e.g., "red," "black," "blue," rather than attributive, e.g., "blood(y)," "sable," "azure". The vocab is not as "literary" as I'd expect.
