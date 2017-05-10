@@ -17,7 +17,7 @@ def tokenize_text():
     """
     text_tokens = []
     # open and read file
-    text = open("./gothicapp/corpora/Radcliffe_TheMysteriesOfUdolpho_Gutenberg.txt")
+    text = "Brown was the color of her hair."
     for row in text:
         tokens = word_tokenize(row)# splits string
         # puts everything in lowercase, removes punctuation
