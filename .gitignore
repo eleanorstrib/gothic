@@ -1,6 +1,7 @@
+.DS_Store
+secret.sh
+gothic
 notes.txt
 testtext.txt
 __pycache
-gothic
 *.pyc
-data
