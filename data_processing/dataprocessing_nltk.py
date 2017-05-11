@@ -28,11 +28,11 @@ def get_color_words():
 def tokenize_text():
     """
     This function generates a list of tokens with punctuation
-    and spaces removed for the whole text
+    and spaces removed for the whole text.
     """
     text_tokens = []
     # open and read file
-    text = open("./gothicapp/corpora/Polidori_TheVampyre_Gutenberg.txt")
+    text = open("../corpora/Polidori_TheVampyre_Gutenberg.txt")
     for row in text:
         tokens = word_tokenize(row)# splits string
         # puts everything in lowercase, removes punctuation
@@ -112,7 +112,8 @@ def collapse_colors(word_list):
 def main():
     color_word_list = get_color_words()
     print(color_word_list)
-    # tokens = tokenize_text()
+    tokens = tokenize_text()
+    print(tokens)
     # word_count(tokens)
     # nouns, adjectives, verbs = word_type(tokens)
     # color_nouns = color_filter(nouns, color_words)
