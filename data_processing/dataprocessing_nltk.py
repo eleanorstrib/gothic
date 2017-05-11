@@ -43,10 +43,9 @@ def word_count(tokens):
 def word_type(tokens):
     """
     Classifies the words in the corpus into types (e.g. noun, verb, etc.), then
-    creates and returns lists of the nouns and adjectives.
+    creates and returns lists of dicts for each noun and adjective.
     """
-    nouns = []
-    adjectives  = []
+    text_dict_list = []
     # seperates tags into tuples in format ( word, tag)
     tagged_text =  nltk.pos_tag(tokens)
     # loop through, determine word type, add position
@@ -55,14 +54,16 @@ def word_type(tokens):
             new_dict = {}
             new_dict[item[0]]= {}
             new_dict[item[0]]['position'] = pos
-            nouns.append(new_dict)
+            new_dict[item[0]]['type'] = 'noun'
+            text_dict_list.append(new_dict)
         if item[1][0] == 'J':
             new_dict = {}
             new_dict[item[0]] = {}
             new_dict[item[0]]['position'] = pos
-            adjectives.append(new_dict)
-    print(adjectives, "adjectives!!")
-    return nouns, adjectives
+            new_dict[item[0]]['type'] = 'adjective'
+            text_dict_list.append(new_dict)
+    print(text_dict_list)
+    return text_dict_list
 
 
 def color_filter(typed_list, color_word_list):
@@ -104,7 +105,8 @@ def main():
     corpus_file_list = get_corpus_filenames()
     for filename in corpus_file_list:
         tokens = tokenize_text(filename)
-        nouns, adjectives = word_type(tokens)
+        text_dict_list = word_type(tokens) # list of dicts for every noun, adjective
+
     # color_nouns = color_filter(nouns, color_words)
     # color_adj = color_filter(adjectives, color_words)
     # print("Color nouns", color_nouns)
