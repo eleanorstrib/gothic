@@ -5,7 +5,6 @@ colour==0.1.2
 cymem==1.31.2
 cytoolz==0.8.2
 dill==0.2.6
-dj-database-url==0.4.2
 Django==1.11
 django-autocomplete-light==3.2.7
 gensim==0.13.4.1

@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,10 +11,9 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
-# ["salty-wave-23247.herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -75,9 +73,6 @@ DATABASES = {
     }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
 FIXTURE_DIRS = (
    '/gothicapp/gothiccolors/fixtures/',
 )
@@ -120,9 +115,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATICFILES_DIRS = (
-    [os.path.join(PROJECT_ROOT, 'static')]
-)
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

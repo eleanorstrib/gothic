@@ -65,7 +65,6 @@ cottonous,1664,white as cotton,white,https://3.imimg.com/data3/HT/BS/MY-3476148/
 cottony,1664,white as cotton,white,https://3.imimg.com/data3/HT/BS/MY-3476148/raw-cotton-250x250.jpg,adjective,The external world > matter > colour > named colors
 dead white,1794,dull white,ghostwhite,,adjective,The external world > matter > colour > named colors
 sheep-hued,1583,off-white,oldlace,,adjective,The external world > matter > colour > named colors
-natural,1854,off-white,oldlace,,adjective,The external world > matter > colour > named colors
 ecru,1869,off-white,oldlace,,adjective,The external world > matter > colour > named colors
 natural-coloured,1909,off-white,oldlace,,adjective,The external world > matter > colour > named colors
 off-white,1931,off-white,oldlace,,adjective,The external world > matter > colour > named colors
@@ -188,7 +187,6 @@ red-coloured,1547,red ,red,,adjective,The external world > matter > colour > nam
 guly,1592,red ,red,,adjective,The external world > matter > colour > named colors
 blushing,1597,red ,red,,adjective,The external world > matter > colour > named colors
 rubric,1623,red ,red,,adjective,The external world > matter > colour > named colors
-angry,1633,red ,red,,adjective,The external world > matter > colour > named colors
 nacarine,1643,red ,red,,adjective,The external world > matter > colour > named colors
 minious,1646,red ,red,,adjective,The external world > matter > colour > named colors
 rubriform,1704,red ,red,,adjective,The external world > matter > colour > named colors
@@ -213,43 +211,43 @@ rufous,1782,reddish,red,,adjective,The external world > matter > colour > named 
 reddy,1845,reddish,red,,adjective,The external world > matter > colour > named colors
 inred,1225,very red,red,,adjective,The external world > matter > colour > named colors
 foxy,1783,excessively red,red,,adjective,The external world > matter > colour > named colors
-angered,1300,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-scarlet,1386,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-puniceous,1398,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-vermeil,1400,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-coral,1522,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-Punic,1553,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-orient,1578,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-vermilion,1589,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-wax-red,1593,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-cherry-red,1594,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-Punical,1606,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-coralline,1608,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-scarleted,1641,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-coccineous,1654,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-cinnabrian,1668,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-poppy-coloured,1677,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-miniaceous,1688,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-phoeniceous,1688,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-cherry-coloured,1695,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-coral-red,1700,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-cherried,1762,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-punicean,1786,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-cinnabar,1807,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-geraniumed,1819,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-miniatous,1826,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-vermilion-coloured,1836,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-geranium-coloured,1836,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-pink,1846,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-lobster-red,1846,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-phoenicean,1857,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-magenta,1877,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-cardinal,1879,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-scarlet-vermilion,1882,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-canellia-red,1890,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-miniate,1891,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-nasturtium-red,1896,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
-sealing-wax red,1907,bright red or scarlet,magenta,,adjective,The external world > matter > colour > named colors
+angered,1300,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+scarlet,1386,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+puniceous,1398,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+vermeil,1400,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+coral,1522,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+Punic,1553,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+orient,1578,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+vermilion,1589,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+wax-red,1593,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+cherry-red,1594,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+Punical,1606,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+coralline,1608,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+scarleted,1641,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+coccineous,1654,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+cinnabrian,1668,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+poppy-coloured,1677,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+miniaceous,1688,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+phoeniceous,1688,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+cherry-coloured,1695,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+coral-red,1700,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+cherried,1762,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+punicean,1786,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+cinnabar,1807,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+geraniumed,1819,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+miniatous,1826,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+vermilion-coloured,1836,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+geranium-coloured,1836,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+pink,1846,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+lobster-red,1846,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+phoenicean,1857,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+magenta,1877,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+cardinal,1879,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+scarlet-vermilion,1882,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+canellia-red,1890,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+miniate,1891,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+nasturtium-red,1896,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
+sealing-wax red,1907,bright red or scarlet,red,,adjective,The external world > matter > colour > named colors
 blood-red,0000,deep red or crimson,crimson,,adjective,The external world > matter > colour > named colors
 bloody,0000,deep red or crimson,crimson,,adjective,The external world > matter > colour > named colors
 purpurine,1300,deep red or crimson,crimson,,adjective,The external world > matter > colour > named colors
@@ -1091,7 +1089,6 @@ purplish,1562,purplish,purple,,adjective,The external world > matter > colour > 
 purply,1725,purplish,purple,,adjective,The external world > matter > colour > named colors
 jacinthinous,1495,deep purple,darkmagenta,,adjective,The external world > matter > colour > named colors
 damson,1661,deep purple,darkmagenta,,adjective,The external world > matter > colour > named colors
-imperial,1736,deep purple,darkmagenta,,adjective,The external world > matter > colour > named colors
 gridelin,1652,light purple,plum,,adjective,The external world > matter > colour > named colors
 lilac-coloured,1766,light purple,plum,,adjective,The external world > matter > colour > named colors
 lilac,1804,light purple,plum,,adjective,The external world > matter > colour > named colors
