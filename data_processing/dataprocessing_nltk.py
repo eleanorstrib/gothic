@@ -4,25 +4,11 @@ Modifying test code to run, populate database
 
 import string
 import nltk
-import csv
 from collections import defaultdict
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+from color_corpus_lists import get_color_words, get_corpus_filenames
 
-
-def get_color_words():
-    """
-    Gets color words from the csv file.
-    """
-    color_word_list = []
-    color_data = csv.reader(open('./color_names.csv'), delimiter=",", quotechar='"')
-
-    for row in color_data:
-        if row[0] != "Colour Name":
-            print (row[0].lower())
-            color_word_list.append(row[0].lower())
-
-    return color_word_list
 
 
 def tokenize_text():

@@ -1,7 +1,6 @@
 import csv
 
 
-
 def get_color_words():
     """
     Gets color words from the csv file and puts them into a list.
@@ -30,10 +29,3 @@ def get_corpus_filenames():
             corpus_file_list.append(row[14])
     print(corpus_file_list)
     return corpus_file_list
-
-def main():
-    color_word_list = get_color_words
-    corpus_file_list = get_corpus_filenames()
-
-if __name__ == '__main__':
-    main()
