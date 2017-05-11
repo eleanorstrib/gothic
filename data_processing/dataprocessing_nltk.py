@@ -10,21 +10,24 @@ from nltk.stem import WordNetLemmatizer
 from color_corpus_lists import get_color_words, get_corpus_filenames
 
 
-
-def tokenize_text():
+def tokenize_text(filename):
     """
     This function generates a list of tokens with punctuation
     and spaces removed for the whole text.
     """
     text_tokens = []
-    # open and read file
-    text = open("../corpora/Polidori_TheVampyre_Gutenberg.txt")
-    for row in text:
-        tokens = word_tokenize(row)# splits string
-        # puts everything in lowercase, removes punctuation
-        tokens = [token.lower() for token in tokens if token not in string.punctuation]
-        # adds row tokens to master list
-        text_tokens.extend(tokens)
+    if filename != '':
+        file_path = "../corpora/" + filename
+        try:
+            text = open(file_path)
+            for row in text:
+                tokens = word_tokenize(row)# splits string
+                # puts everything in lowercase, removes punctuation
+                tokens = [token.lower() for token in tokens if token not in string.punctuation]
+                # adds row tokens to master list
+                text_tokens.extend(tokens)
+        except:
+            print("can't open", filename)
     return text_tokens
 
 
@@ -44,22 +47,22 @@ def word_type(tokens):
     """
     nouns = []
     adjectives  = []
-    verbs = []
-    counter = 0
     # seperates tags into tuples in format ( word, tag)
     tagged_text =  nltk.pos_tag(tokens)
     # loop through, determine word type, add position
     for pos, item in enumerate(tagged_text):
-        try:
-            if item[1][0] == 'N':
-                nouns.append((item[0], pos))
-            if item[1][0] == 'J':
-                adjectives.append((item[0], pos))
-            if item[1][0] == 'V':
-                verbs.append((item[0], pos))
-        except:
-            print('exception from', item)
-    return nouns, adjectives, verbs
+        if item[1][0] == 'N':
+            new_dict = {}
+            new_dict[item[0]]= {}
+            new_dict[item[0]]['position'] = pos
+            nouns.append(new_dict)
+        if item[1][0] == 'J':
+            new_dict = {}
+            new_dict[item[0]] = {}
+            new_dict[item[0]]['position'] = pos
+            adjectives.append(new_dict)
+    print(adjectives, "adjectives!!")
+    return nouns, adjectives
 
 
 def color_filter(typed_list, color_word_list):
@@ -74,6 +77,7 @@ def color_filter(typed_list, color_word_list):
         if lemmatized_word in color_word_list:
             filtered.append(item)
     return filtered
+
 
 def color_list(color_adjectives):
     """
@@ -97,11 +101,10 @@ def collapse_colors(word_list):
 
 def main():
     color_word_list = get_color_words()
-    print(color_word_list)
-    tokens = tokenize_text()
-    print(tokens)
-    # word_count(tokens)
-    # nouns, adjectives, verbs = word_type(tokens)
+    corpus_file_list = get_corpus_filenames()
+    for filename in corpus_file_list:
+        tokens = tokenize_text(filename)
+        nouns, adjectives = word_type(tokens)
     # color_nouns = color_filter(nouns, color_words)
     # color_adj = color_filter(adjectives, color_words)
     # print("Color nouns", color_nouns)

@@ -10,7 +10,6 @@ def get_color_words():
 
     for row in color_data:
         if row[0] != "Colour Name":
-            print (row[0].lower())
             color_word_list.append(row[0].lower())
 
     return color_word_list
@@ -25,7 +24,5 @@ def get_corpus_filenames():
 
     for row in corpus_files:
         if row[0] != "Title":
-            print (row[14])
             corpus_file_list.append(row[14])
-    print(corpus_file_list)
     return corpus_file_list
