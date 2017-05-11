@@ -4,7 +4,7 @@ Modifying test code to run, populate database
 
 import string
 import nltk
-from collections import defaultdict
+from collections import Counter
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from color_corpus_lists import get_color_words, get_corpus_filenames
@@ -84,34 +84,29 @@ def color_filter(text_dict_list, color_word_dict):
 
 
 def get_context(tokens, color_words_filtered):
+    """
+    This function gets the context for each color word from the tokenized text,
+    and adds it as a key, value pair to the dict.
+    """
     for item in color_words_filtered:
         color = item[list(item.keys())[0]]
         word_num = color['position']
         context = ' '.join(tokens[(word_num-10):(word_num+10)])
         color['context'] = context
-    print(color_words_filtered)
     return color_words_filtered
 
 
+def create_summary_dict(color_words_final):
+    """
+    Collapes all color words into a dict with key = word, value = # found.
+    """
+    summary_list = [list(word.keys())[0] for word in color_words_final]
+    color_summary_dict = Counter(summary_list)
+    print(color_summary_dict)
+    return color_summary_dict
 
-def color_list(color_adjectives):
-    """
-    Returns an ordered list of color words
-    """
-    word_only_list = []
-    for item in color_adjectives:
-        word_only_list.append(item[0])
-    return word_only_list
 
 
-def collapse_colors(word_list):
-    """
-    Removes position, returns colors with count of occurrances.
-    """
-    color_dict_collapsed = {}
-    for item in word_list:
-        color_dict_collapsed[item[0]] = color_dict_collapsed.get(item[0], 0) + 1
-    return color_dict_collapsed
 
 
 def main():
@@ -122,13 +117,8 @@ def main():
         tokens = tokenize_text(filename)
         text_dict_list = word_type(tokens) # list of dicts for every noun, adjective
         color_words_filtered = color_filter(text_dict_list, color_word_dict)
-        get_context(tokens, color_words_filtered)
-    # color_nouns = color_filter(nouns, color_words)
-    # color_adj = color_filter(adjectives, color_words)
-    # print("Color nouns", color_nouns)
-    # print("Color adjectives", color_adj)
-    # print(color_list(color_adj))
-    # print(collapse_colors(color_filter(adjectives, color_words)))
+        color_words_final = get_context(tokens, color_words_filtered)
+        color_summary_dict = create_summary_dict(color_words_final)
 
 if __name__ == "__main__":
     main()
