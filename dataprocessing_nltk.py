@@ -3,12 +3,26 @@ Modifying test code to run, populate database
 """
 
 import string
-from oed_color import color_words
 import nltk
+import csv
 from collections import defaultdict
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
+
+def get_color_words():
+    """
+    Gets color words from the csv file.
+    """
+    color_word_list = []
+    color_data = csv.reader(open('./color_names.csv'), delimiter=",", quotechar='"')
+
+    for row in color_data:
+        if row[0] != "Colour Name":
+            print (row[0].lower())
+            color_word_list.append(row[0].lower())
+
+    return color_word_list
 
 def tokenize_text():
     """
@@ -17,7 +31,7 @@ def tokenize_text():
     """
     text_tokens = []
     # open and read file
-    text = open("./gothicapp/corpora/Radcliffe_TheMysteriesOfUdolpho_Gutenberg.txt")
+    text = open("./gothicapp/corpora/Polidori_TheVampyre_Gutenberg.txt")
     for row in text:
         tokens = word_tokenize(row)# splits string
         # puts everything in lowercase, removes punctuation
@@ -43,7 +57,6 @@ def word_type(tokens):
     """
     nouns = []
     adjectives  = []
-    verbs = []
     counter = 0
     # seperates tags into tuples in format ( word, tag)
     tagged_text =  nltk.pos_tag(tokens)
@@ -54,11 +67,9 @@ def word_type(tokens):
                 nouns.append((item[0], pos))
             if item[1][0] == 'J':
                 adjectives.append((item[0], pos))
-            if item[1][0] == 'V':
-                verbs.append((item[0], pos))
         except:
             print('exception from', item)
-    return nouns, adjectives, verbs
+    return nouns, adjectives
 
 
 def color_filter(typed_list, color_word_list):
@@ -95,12 +106,16 @@ def collapse_colors(word_list):
 
 
 def main():
+    color_word_list = get_color_words()
     tokens = tokenize_text()
-    word_count(tokens)
+    print(word_count(tokens))
     nouns, adjectives, verbs = word_type(tokens)
-    color_adj = color_filter(adjectives, color_words)
-    print(color_list(color_adj))
-    print(collapse_colors(color_filter(adjectives, color_words)))
+    color_nouns = color_filter(nouns, color_word_list)
+    color_adj = color_filter(adjectives, color_word_list)
+    print("Color nouns", color_nouns)
+    print("Color adjectives", color_adj)
+    print(collapse_colors(color_filter(nouns, color_word_list)))
+    print(collapse_colors(color_filter(adjectives, color_word_list)))
 
 if __name__ == "__main__":
     main()
