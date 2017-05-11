@@ -12,8 +12,9 @@ def get_color_words():
     for row in color_data:
         if row[0] != "Colour Name":
             name = row[0].lower()
+            family = row[2].lower()
             hex_value = row[3].lower()
-            color_word_dict[name] = hex_value
+            color_word_dict[name] = (hex_value, family)
     return color_word_dict
 
 

@@ -66,7 +66,7 @@ def word_type(tokens):
     return text_dict_list
 
 
-def color_filter(text_dict_list, color_word_list):
+def color_filter(text_dict_list, color_word_dict):
     """
     Takes the list of dicts from each text, compares the key in each dict to the
     color list, appends to final list if there is a match.
@@ -74,11 +74,12 @@ def color_filter(text_dict_list, color_word_list):
     color_words_filtered = []
     lemmatizer = WordNetLemmatizer()
     for word in text_dict_list:
-        lemmatized_word = lemmatizer.lemmatize(list(word.keys())[0])
-        print(lemmatized_word)
-        if lemmatized_word in color_word_list:
+        color_word = list(word.keys())[0]
+        lemmatized_word = lemmatizer.lemmatize(color_word)
+        if lemmatized_word in color_word_dict:
+            word[color_word]['hex_value'] = color_word_dict[lemmatized_word][0]
+            word[color_word]['family'] = color_word_dict[lemmatized_word][1]
             color_words_filtered.append(word)
-    print(color_words_filtered)
     return color_words_filtered
 
 
@@ -114,13 +115,13 @@ def collapse_colors(word_list):
 
 
 def main():
-    color_word_list = get_color_words()
+    color_word_dict = get_color_words()
     corpus_file_list = ["ShelleyMary_Frankenstein_Gutenberg.txt"]
     # get_corpus_filenames()
     for filename in corpus_file_list:
         tokens = tokenize_text(filename)
         text_dict_list = word_type(tokens) # list of dicts for every noun, adjective
-        color_words_filtered = color_filter(text_dict_list, color_word_list)
+        color_words_filtered = color_filter(text_dict_list, color_word_dict)
         get_context(tokens, color_words_filtered)
     # color_nouns = color_filter(nouns, color_words)
     # color_adj = color_filter(adjectives, color_words)
