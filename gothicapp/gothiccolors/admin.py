@@ -1,4 +1,4 @@
 from django.contrib import admin
-from gothiccolors.models import Corpus
+from gothiccolors.models import Corpus, Color
 
-admin.site.register(Corpus)
+admin.register(Corpus, Color)(admin.ModelAdmin)
