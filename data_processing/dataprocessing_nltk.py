@@ -3,11 +3,26 @@ Modifying test code to run, populate database
 """
 
 import string
-from oed_color import color_words
 import nltk
+import csv
 from collections import defaultdict
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+
+
+def get_color_words():
+    """
+    Gets color words from the csv file.
+    """
+    color_word_list = []
+    color_data = csv.reader(open('./color_names.csv'), delimiter=",", quotechar='"')
+
+    for row in color_data:
+        if row[0] != "Colour Name":
+            print (row[0].lower())
+            color_word_list.append(row[0].lower())
+
+    return color_word_list
 
 
 def tokenize_text():
@@ -95,13 +110,15 @@ def collapse_colors(word_list):
 
 
 def main():
-    tokens = tokenize_text()
-    word_count(tokens)
-    nouns, adjectives, verbs = word_type(tokens)
-    color_nouns = color_filter(nouns, color_words)
-    color_adj = color_filter(adjectives, color_words)
-    print("Color nouns", color_nouns)
-    print("Color adjectives", color_adj)
+    color_word_list = get_color_words()
+    print(color_word_list)
+    # tokens = tokenize_text()
+    # word_count(tokens)
+    # nouns, adjectives, verbs = word_type(tokens)
+    # color_nouns = color_filter(nouns, color_words)
+    # color_adj = color_filter(adjectives, color_words)
+    # print("Color nouns", color_nouns)
+    # print("Color adjectives", color_adj)
     # print(color_list(color_adj))
     # print(collapse_colors(color_filter(adjectives, color_words)))
 
