@@ -125,13 +125,13 @@ def main():
     master_color_summary_dict = []
     master_word_count = []
 
-    print("********* now processing %s *********" % filename)
     for filename in corpus_file_list:
+        print("********* now processing %s *********" % filename)
         tokens = tokenize_text(filename)
         print("tokenization complete")
         word_num = word_count(tokens)
         print("word_count", word_num)
-        master_word_count.append(word_num/1000)
+        master_word_count.append(word_num)
         text_dict_list = word_type(tokens)
         print("text_dict_list done")
         color_words_filtered = color_filter(text_dict_list, color_word_dict)
@@ -147,9 +147,9 @@ def main():
     print("adding data to csv...")
     add_to_csv(master_color_summary_dict, 'gothic_text_data.csv', 'summary_dict')
     add_to_csv(master_color_words_final, 'new_gothic_text_data.csv', 'color_words_list')
-    add_to_csv(master_word_count, 'new_new_gothic_text_data.csv', 'word_count')
+    # add_to_csv(master_word_count, 'gothic_text_data.csv', 'word_num')
     print("That's it!")
 
-    
+
 if __name__ == "__main__":
     main()
