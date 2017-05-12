@@ -4,6 +4,7 @@ Modifying test code to run, populate database
 
 import string
 import nltk
+import csv
 from collections import Counter
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -62,7 +63,6 @@ def word_type(tokens):
             new_dict[item[0]]['position'] = pos
             new_dict[item[0]]['type'] = 'adjective'
             text_dict_list.append(new_dict)
-    print(text_dict_list)
     return text_dict_list
 
 
@@ -101,24 +101,55 @@ def create_summary_dict(color_words_final):
     Collapes all color words into a dict with key = word, value = # found.
     """
     summary_list = [list(word.keys())[0] for word in color_words_final]
-    color_summary_dict = Counter(summary_list)
-    print(color_summary_dict)
+    color_summary_dict = dict(Counter(summary_list))
     return color_summary_dict
 
-
-
+def add_to_csv(data, csvfile, heading):
+    """
+    Cycles through master lists of data and adds them to the file.
+    """
+    with open(csvfile, 'r') as fin, open('new_'+csvfile, 'w') as fout:
+        reader = csv.reader(fin, lineterminator='\n')
+        writer = csv.writer(fout, lineterminator='\n')
+        writer.writerow(next(reader) + [heading])
+        for row, val in zip(reader, data):
+            writer.writerow(row + [val])
+    print("done")
 
 
 def main():
     color_word_dict = get_color_words()
-    corpus_file_list = ["ShelleyMary_Frankenstein_Gutenberg.txt"]
-    # get_corpus_filenames()
+    corpus_file_list = get_corpus_filenames()
+    print("we have the lists!")
+    master_color_words_final = []
+    master_color_summary_dict = []
+    master_word_count = []
+
+    print("********* now processing %s *********" % filename)
     for filename in corpus_file_list:
         tokens = tokenize_text(filename)
-        text_dict_list = word_type(tokens) # list of dicts for every noun, adjective
+        print("tokenization complete")
+        word_num = word_count(tokens)
+        print("word_count", word_num)
+        master_word_count.append(word_num/1000)
+        text_dict_list = word_type(tokens)
+        print("text_dict_list done")
         color_words_filtered = color_filter(text_dict_list, color_word_dict)
+        print("color_words_filtered")
         color_words_final = get_context(tokens, color_words_filtered)
+        master_color_words_final.append(color_words_final)
         color_summary_dict = create_summary_dict(color_words_final)
+        master_color_summary_dict.append(color_summary_dict)
 
+    print("color_summary_dict count: ",len(master_color_summary_dict))
+    print("color_words_final count: ", len(master_color_words_final))
+
+    print("adding data to csv...")
+    add_to_csv(master_color_summary_dict, 'gothic_text_data.csv', 'summary_dict')
+    add_to_csv(master_color_words_final, 'new_gothic_text_data.csv', 'color_words_list')
+    add_to_csv(master_word_count, 'new_new_gothic_text_data.csv', 'word_count')
+    print("That's it!")
+
+    
 if __name__ == "__main__":
     main()
