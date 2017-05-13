@@ -53,35 +53,39 @@ elements: {
 });
 
 </script>
-  <!-- {{ data | length }} Results <br />
-  {% for work in data %}
+  {{ data | length }} Results!!! Blerg <br />
+
+  <!-- {% for work in data %}
+
   <div class="container">
     <table class="table">
       <tr>
 				<td class="col-md-4 col-xs-3">
-					{{ work }} ({{ work.year }}) <br />
+					{{ work.title }} ({{ work.title }}) <br />
 					by {{ work.author }}<br />
 					{{ work.mode }} | {{ work.role }} | {{ work.nationality}}
+					{{ work.cd }}
 				</td>
         <td class="col-md-4 col-xs-3">
-					{% for key, value in work.color_dict.items %}
+					DICT
+					{% for key, value in work.cd.items %}
 					{{ key }} ({{ value }})
 					{% endfor %}
         </td>
         <td>
         </td>
         <td class="col-md-4 col-xs-6">
-					{% for item in work.color_list %}
-						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }} | Word type: {{ item.1 }} | Word type: {{ item.1 }}">
+					{% for item in work.cl %}
+						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }} | Word type: {% if item.1 == 'a' %}'adjective'{% else %}'noun'{% endif %} | Word type: {{ item.1 }}">
 						<div class="color-square" style="background:{{ item.1 }}"></div>
 						</a>
 					{% endfor %}
         </td>
       </tr>
-    </table> -->
+    </table>
   </div>
 
-  {% endfor %}
+  {% endfor %} -->
 	<div id="container"><canvas id="polar-chart" ></canvas></div>
 	<!--jQuery-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
