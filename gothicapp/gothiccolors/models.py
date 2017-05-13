@@ -62,6 +62,7 @@ class Corpus(models.Model):
     cover_art = models.URLField(null=True, blank=True)
     color_list = JSONField(null=True, blank=True)
     color_dict = JSONField(null=True, blank=True)
+    word_count = models.BigIntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.title

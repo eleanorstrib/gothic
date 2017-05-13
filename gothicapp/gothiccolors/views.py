@@ -1,4 +1,7 @@
+from collections import Counter
 import json
+import nltk
+from nltk.stem import WordNetLemmatizer
 from django.shortcuts import render
 from .models import Corpus, Color
 
@@ -10,31 +13,39 @@ def results(request):
     colors = Color.objects.all()
     corpora = Corpus.objects.all()
     data = []
+
     for i in range(0, len(corpora)):
-        title = corpora[i].title
-        title = {}
-        color_list = json.loads(corpora[i].color_list)
+        if corpora[i].color_list != "[]":
+            new_dict = {}
+            cd = json.loads(corpora[i].color_dict)
+            cd = sorted(cd.items(), key=lambda x:x[1])
+            print (cd)
+            new_dict['cd'] = cd
+            cl = json.loads(corpora[i].color_list)
+            new_dict['cl'] = cl
+            new_dict['title'] = corpora[i].title
+            new_dict['author'] = corpora[i].author
+            new_dict['year'] = corpora[i].year
+            new_dict['mode'] = corpora[i].mode
+            new_dict['nationality'] = corpora[i].nationality
+            new_dict['period'] = corpora[i].period
+            new_dict['role'] = corpora[i].role
+            new_dict['word_count'] = corpora[i].word_count
+            new_dict['pct_color'] = (len(cl)/(corpora[i].word_count))*100
 
-        title['name'] = corpora[i].title # using the title var creates a circular reference
-        title['author'] = corpora[i].author
-        title['year'] = corpora[i].year
-        title['mode'] = corpora[i].mode
-        title['nationality'] = corpora[i].nationality
-        title['role'] = corpora[i].role
-        title['color_dict'] = json.loads(corpora[i].color_dict)
-        title['color_list'] = []
 
-        data_list = []
-        try:
-            for color in color_list:
-                color_data = colors.filter(name=color)
-                hex_name = color_data.first().hex_name
-                family = color_data.first().family
-                data_list.append((color, hex_name, family))
-        except:
-            print("problem for ", corpora[i].title)
+            for color in new_dict['cl']:
+                color_name = color[0]
+                try:
+                    color_data = colors.filter(name=color_name)[0]
+                    color.append(color_data.hex_name)
+                    color.append(color_data.family)
+                except:
+                    lemmatizer = WordNetLemmatizer()
+                    color_name = lemmatizer.lemmatize(color_name)
+                    if colors.filter(name=color_name)[0]:
+                        color.append(color_data.hex_name)
+                        color.append(color_data.family)
 
-        title['color_list'] = data_list
-        data.append(title)
-
+            data.append(new_dict)
     return render(request, 'gothiccolors/results.html', {'data': data})
