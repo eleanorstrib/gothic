@@ -52,17 +52,22 @@ def word_type(tokens):
     # loop through, determine word type, add position
     for pos, item in enumerate(tagged_text):
         if item[1][0] == 'N':
-            new_dict = {}
-            new_dict[item[0]]= {}
-            new_dict[item[0]]['position'] = pos
-            new_dict[item[0]]['type'] = 'noun'
-            text_dict_list.append(new_dict)
+            word_list= [item[0], 'n']
+            text_dict_list.append(word_list)
+            # new_dict = {}
+            # new_dict[item[0]]= {}
+            # new_dict[item[0]]['position'] = pos
+            # new_dict[item[0]]['type'] = 'n'
+            # text_dict_list.append(new_dict)
         if item[1][0] == 'J':
-            new_dict = {}
-            new_dict[item[0]] = {}
-            new_dict[item[0]]['position'] = pos
-            new_dict[item[0]]['type'] = 'adjective'
-            text_dict_list.append(new_dict)
+            word_list = [item[0], 'a']
+            text_dict_list.append(word_list)
+            # new_dict = {}
+            # new_dict[item[0]] = {}
+            # new_dict[item[0]]['position'] = pos
+            # new_dict[item[0]]['type'] = 'a'
+            # text_dict_list.append(new_dict)
+    print(text_dict_list)
     return text_dict_list
 
 
@@ -73,13 +78,13 @@ def color_filter(text_dict_list, color_word_dict):
     """
     color_words_filtered = []
     lemmatizer = WordNetLemmatizer()
-    for word in text_dict_list:
-        color_word = list(word.keys())[0]
-        lemmatized_word = lemmatizer.lemmatize(color_word)
+    for word_list in text_dict_list:
+        # color_word = list(word.keys())[0]
+        word = word_list[0]
+        lemmatized_word = lemmatizer.lemmatize(word)
         if lemmatized_word in color_word_dict:
-            word[color_word]['hex_value'] = color_word_dict[lemmatized_word][0]
-            word[color_word]['family'] = color_word_dict[lemmatized_word][1]
-            color_words_filtered.append(word)
+            color_words_filtered.append(word_list)
+    print(color_words_filtered)
     return color_words_filtered
 
 
@@ -88,11 +93,15 @@ def get_context(tokens, color_words_filtered):
     This function gets the context for each color word from the tokenized text,
     and adds it as a key, value pair to the dict.
     """
-    for item in color_words_filtered:
-        color = item[list(item.keys())[0]]
-        word_num = color['position']
-        context = ' '.join(tokens[(word_num-10):(word_num+10)])
-        color['context'] = context
+    for word_list in color_words_filtered:
+        print(type(word_list))
+        # color = item[list(item.keys())[0]]
+        word_num = word_list[2]
+        print (word_num)
+        context = ' '.join(tokens[(word_num-5):(word_num+5)])
+        word_list.append(context)
+        # color['context'] = context
+    print(color_words_filtered)
     return color_words_filtered
 
 
@@ -100,15 +109,17 @@ def create_summary_dict(color_words_final):
     """
     Collapes all color words into a dict with key = word, value = # found.
     """
-    summary_list = [list(word.keys())[0] for word in color_words_final]
+    # summary_list = [list(word.keys())[0] for word in color_words_final]
+    summary_list = [word_list[0] for word_list in color_words_final]
     color_summary_dict = dict(Counter(summary_list))
+    print(color_summary_dict)
     return color_summary_dict
 
 def add_to_csv(data, csvfile, heading):
     """
     Cycles through master lists of data and adds them to the file.
     """
-    with open(csvfile, 'r') as fin, open('new_'+csvfile, 'w') as fout:
+    with open(csvfile, 'r') as fin, open('test_'+csvfile, 'w') as fout:
         reader = csv.reader(fin, lineterminator='\n')
         writer = csv.writer(fout, lineterminator='\n')
         writer.writerow(next(reader) + [heading])
@@ -134,9 +145,9 @@ def main():
         master_word_count.append(word_num)
         text_dict_list = word_type(tokens)
         print("text_dict_list done")
-        color_words_filtered = color_filter(text_dict_list, color_word_dict)
+        color_words_final = color_filter(text_dict_list, color_word_dict)
         print("color_words_filtered")
-        color_words_final = get_context(tokens, color_words_filtered)
+        # color_words_final = get_context(tokens, color_words_final)
         master_color_words_final.append(color_words_final)
         color_summary_dict = create_summary_dict(color_words_final)
         master_color_summary_dict.append(color_summary_dict)
@@ -146,8 +157,8 @@ def main():
 
     print("adding data to csv...")
     add_to_csv(master_color_summary_dict, 'gothic_text_data.csv', 'summary_dict')
-    add_to_csv(master_color_words_final, 'new_gothic_text_data.csv', 'color_words_list')
-    # add_to_csv(master_word_count, 'gothic_text_data.csv', 'word_num')
+    add_to_csv(master_color_words_final, 'test_gothic_text_data.csv', 'color_words_list')
+    add_to_csv(master_word_count, 'test_test_gothic_text_data.csv', 'word_num')
     print("That's it!")
 
 
