@@ -46,8 +46,8 @@ with open('./test_test_test_gothic_text_data.csv') as data_file:
             corpus.edition = row[26]
             corpus.word_count = row[29]
             try:
-                color_list = row[27].strip("'<>() ").replace('\'', '\"')
-                color_dict = row[28].strip("'<>() ").replace('\'', '\"')
+                color_dict = row[27].strip("'<>() ").replace('\'', '\"')
+                color_list = row[28].strip("'<>() ").replace('\'', '\"')
                 corpus.color_list = literal_eval(color_list)
                 corpus.color_dict = literal_eval(color_dict)
                 corpus.save()

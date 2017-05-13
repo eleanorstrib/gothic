@@ -53,13 +53,13 @@ elements: {
 });
 
 </script>
-  {{ data | length }} Results <br />
+  <!-- {{ data | length }} Results <br />
   {% for work in data %}
   <div class="container">
     <table class="table">
       <tr>
 				<td class="col-md-4 col-xs-3">
-					{{ work.name }} ({{ work.year }}) <br />
+					{{ work }} ({{ work.year }}) <br />
 					by {{ work.author }}<br />
 					{{ work.mode }} | {{ work.role }} | {{ work.nationality}}
 				</td>
@@ -72,13 +72,13 @@ elements: {
         </td>
         <td class="col-md-4 col-xs-6">
 					{% for item in work.color_list %}
-						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }} | Color family: {{ item.2 }}">
+						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }} | Word type: {{ item.1 }} | Word type: {{ item.1 }}">
 						<div class="color-square" style="background:{{ item.1 }}"></div>
 						</a>
 					{% endfor %}
         </td>
       </tr>
-    </table>
+    </table> -->
   </div>
 
   {% endfor %}
