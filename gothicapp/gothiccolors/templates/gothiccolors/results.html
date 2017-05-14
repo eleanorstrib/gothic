@@ -5,13 +5,15 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<style> .color-square {
+<style>
+canvas {
+	width: 400px;
+	height: 800px;
+}
+.color-square {
 	width: 10px !important;
 	float: left;
 }
-
-canvas#bar-chart {width: 400px; height:400px;
-  margin: 15px auto;}
 	</style>
 	Average percent color words: {{ avg_pct_color | floatformat:2 }}
 	Top 5 color words:
@@ -20,44 +22,36 @@ canvas#bar-chart {width: 400px; height:400px;
 	{% endfor %}
   {{ data | length }} works <br />
 
-	<canvas id="barChart"></canvas>
+	<canvas id="polarChart"></canvas>
 	<script>
-			var label_array = "{% for item in most_used_color_words %}{{ item.0 }},{% endfor %}".split(",", 10);
-			var data = {
-			labels: "{% for item in most_used_color_words %}{{ item.0 }},{% endfor %}".split(","),
-						datasets: [
-								{
-										backgroundColor: [
-												'rgba(255, 99, 132, 0.2)',
-												'rgba(54, 162, 235, 0.2)',
-												'rgba(255, 206, 86, 0.2)',
-												'rgba(75, 192, 192, 0.2)',
-												'rgba(153, 102, 255, 0.2)',
-												'rgba(255, 159, 64, 0.2)'
-										],
-										borderColor: [
-												'rgba(255,99,132,1)',
-												'rgba(54, 162, 235, 1)',
-												'rgba(255, 206, 86, 1)',
-												'rgba(75, 192, 192, 1)',
-												'rgba(153, 102, 255, 1)',
-												'rgba(255, 159, 64, 1)'
-										],
-										borderWidth: 1,
-										data: "{% for item in most_used_color_words%}{{ item.1 }},{% endfor %}".split(",", 10),
-								}
-						]
-				};
-				console.log(data);
-				var ctx = document.getElementById('barChart').getContext('2d');
+
+	var data = {
+	    datasets: [{
+	        data: {{ chart_values }},
+	        backgroundColor: ['white', 'black', 'lightgreen', 'red', 'lightseagreen', 'dimgrey', 'blue', 'green', 'gold', 'crimson'],
+	        label: 'My dataset' // for legend
+	    }],
+	    labels: {{ chart_labels }}
+	};
+
+				var ctx = document.getElementById('polarChart').getContext('2d');
 				ctx.canvas.width = 300;
 				ctx.canvas.height = 300;
 				var barChart = new Chart(ctx, {
-						type: 'bar',
-						data: data,
+					data: data,
+type: "polarArea",
+options: {
+	elements: {
+			arc: {
+					borderColor: "#000000"
+			}
+	}
+}
 				});
 	</script>
-
+{{ chart_labels }}
+{{ chart_values }}
+{{ chart_hex }}
 	<table class="table table-hover table-responsive">
 		{% for work in data %}
 		<tr>
@@ -80,7 +74,7 @@ canvas#bar-chart {width: 400px; height:400px;
 
 			<td class="col-xs-6 col-md-3">
 				{% for item in work.cl %}
-						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }}  |   Word Type: {{ item.1 | capfirst }}  |  Color family: {{ item.3 }}">
+						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }}  |   Word Type: {{ item.1 | capfirst }}  |  Color family: {{ item.3 }}"></a>
 						<div class="color-square" style="background:{{ item.2 }}"></div>
 				{% endfor %}
 
