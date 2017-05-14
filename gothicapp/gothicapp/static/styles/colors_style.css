@@ -1,0 +1,11 @@
+body {
+	background-color: green;
+}
+canvas {
+	width: 50% !important;
+	height: 50% !important;
+}
+.color-square {
+	width: 10px !important;
+	float: left;
+}

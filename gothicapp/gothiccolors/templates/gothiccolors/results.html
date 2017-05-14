@@ -3,18 +3,9 @@
 
 {% block content %}
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<style>
-canvas {
-	width: 400px;
-	height: 800px;
-}
-.color-square {
-	width: 10px !important;
-	float: left;
-}
-	</style>
+
+<link rel="stylesheet" href="../../../static/styles/colors_style.css">
+
 	Average percent color words: {{ avg_pct_color | floatformat:2 }}
 	Top 5 color words:
 	{% for item in most_used_color_words %}
@@ -23,32 +14,7 @@ canvas {
   {{ data | length }} works <br />
 
 	<canvas id="polarChart"></canvas>
-	<script>
 
-	var data = {
-	    datasets: [{
-	        data: {{ chart_values }},
-	        backgroundColor: ['white', 'black', 'lightgreen', 'red', 'lightseagreen', 'dimgrey', 'blue', 'green', 'gold', 'crimson'],
-	        label: 'My dataset' // for legend
-	    }],
-	    labels: {{ chart_labels }}
-	};
-
-				var ctx = document.getElementById('polarChart').getContext('2d');
-				ctx.canvas.width = 300;
-				ctx.canvas.height = 300;
-				var barChart = new Chart(ctx, {
-					data: data,
-type: "polarArea",
-options: {
-	elements: {
-			arc: {
-					borderColor: "#000000"
-			}
-	}
-}
-				});
-	</script>
 {{ chart_labels }}
 {{ chart_values }}
 {{ chart_hex }}
@@ -83,6 +49,32 @@ options: {
   {% endfor %}
 	</table>
 
+	<!-- JavaScript for color pages incl ChartJS -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script>
+		var data = {
+		    datasets: [{
+		        data: {{ chart_values }},
+		        backgroundColor: ['white', 'black', 'lightgreen', 'red', 'lightseagreen', 'dimgrey', 'blue', 'green', 'gold', 'crimson'],
+		        label: 'My dataset' // for legend
+		    }],
+		    labels: {{ chart_labels }}
+		};
+		var ctx = document.getElementById('polarChart').getContext('2d');
+
+		var barChart = new Chart(ctx, {
+					data: data,
+					type: "polarArea",
+					options: {
+						elements: {
+								arc: {
+									borderColor: "#000000"
+								}
+							}
+						}
+		});
+	</script>
 
 	<!--jQuery-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
