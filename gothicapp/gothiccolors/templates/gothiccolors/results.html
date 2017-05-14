@@ -2,58 +2,61 @@
 {% load i18n %}
 
 {% block content %}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <style> .color-square {
 	width: 10px;
 	height: 10px;
 	float: left;
 }
-canvas#polar-chart {width: 80%;
-  margin: 15px auto;} </style>
-
-
-<script>
-var ctx = document.getElementById("polar-chart");
-var data = {
-    datasets: [{
-        data: [
-            11,
-            16,
-            7,
-            3,
-            14
-        ],
-        backgroundColor: [
-            "#FF6384",
-            "#4BC0C0",
-            "#FFCE56",
-            "#E7E9ED",
-            "#36A2EB"
-        ],
-        label: {{ data | length }}// for legend
-    }],
-    labels: [
-      {{ data | length }},
-        "Green",
-        "Yellow",
-        "Grey",
-        "Blue"
-    ]
-};
-console.log(data);
-new Chart(ctx, {
-    data: data,
-    type: 'polarArea',
-    options: {
-elements: {
-  arc: {
-      borderColor: "#000000"
-  }
-}
-}
-});
-
-</script>
+.container
+canvas#bar-chart {width: 100px;
+  margin: 15px auto;}
+	</style>
+	Average percent color words: {{ avg_pct_color | floatformat:2 }}
+	Top 5 color words:
+	{% for item in most_used_color_words %}
+	 {{ item.0}} {{ item.1 }}
+	{% endfor %}
   {{ data | length }} works <br />
+
+	<!-- <canvas id="barChart" width="400" height="400"></canvas> -->
+	<script>
+			var ctx = document.getElementById('barChart').getContext('2d');
+			// ctx.canvas.width = 300;
+			// ctx.canvas.height = 300;
+			var barChart = new Chart(ctx, {
+					type: 'bar',
+					data: data,
+			});
+			var data = {
+			labels: ["January", "February", "March", "April", "May", "June", "July"],
+						datasets: [
+								{
+										backgroundColor: [
+												'rgba(255, 99, 132, 0.2)',
+												'rgba(54, 162, 235, 0.2)',
+												'rgba(255, 206, 86, 0.2)',
+												'rgba(75, 192, 192, 0.2)',
+												'rgba(153, 102, 255, 0.2)',
+												'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+												'rgba(255,99,132,1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+												'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1,
+										data: [65, 59, 80, 81, 56, 55, 40],
+								}
+						]
+				};
+	</script>
+
 	<table class="table table-hover table-responsive">
 		{% for work in data %}
 		<tr>
@@ -69,8 +72,8 @@ elements: {
 			</td>
 
 			<td class="col-xs-6 col-md-3">
-				{% for item in work.cd %}
-					{{ item.1 }}
+				{% for color in work.cd %}
+					{{ color.0 }} ({{ color.1 }})
 				{% endfor %}
 			</td>
 
@@ -84,9 +87,13 @@ elements: {
 		</tr>
   {% endfor %}
 	</table>
-	<div id="container"><canvas id="polar-chart" ></canvas></div>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+
+
 	<!--jQuery-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});</script>
+
+	<script>$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});</script>
+
 {% endblock %}
