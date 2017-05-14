@@ -6,12 +6,11 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <style> .color-square {
-	width: 10px;
-	height: 10px;
+	width: 10px !important;
 	float: left;
 }
-.container
-canvas#bar-chart {width: 100px;
+
+canvas#bar-chart {width: 400px; height:400px;
   margin: 15px auto;}
 	</style>
 	Average percent color words: {{ avg_pct_color | floatformat:2 }}
@@ -21,17 +20,11 @@ canvas#bar-chart {width: 100px;
 	{% endfor %}
   {{ data | length }} works <br />
 
-	<!-- <canvas id="barChart" width="400" height="400"></canvas> -->
+	<canvas id="barChart"></canvas>
 	<script>
-			var ctx = document.getElementById('barChart').getContext('2d');
-			// ctx.canvas.width = 300;
-			// ctx.canvas.height = 300;
-			var barChart = new Chart(ctx, {
-					type: 'bar',
-					data: data,
-			});
+			var label_array = "{% for item in most_used_color_words %}{{ item.0 }},{% endfor %}".split(",", 10);
 			var data = {
-			labels: ["January", "February", "March", "April", "May", "June", "July"],
+			labels: "{% for item in most_used_color_words %}{{ item.0 }},{% endfor %}".split(","),
 						datasets: [
 								{
 										backgroundColor: [
@@ -51,10 +44,18 @@ canvas#bar-chart {width: 100px;
 												'rgba(255, 159, 64, 1)'
 										],
 										borderWidth: 1,
-										data: [65, 59, 80, 81, 56, 55, 40],
+										data: "{% for item in most_used_color_words%}{{ item.1 }},{% endfor %}".split(",", 10),
 								}
 						]
 				};
+				console.log(data);
+				var ctx = document.getElementById('barChart').getContext('2d');
+				ctx.canvas.width = 300;
+				ctx.canvas.height = 300;
+				var barChart = new Chart(ctx, {
+						type: 'bar',
+						data: data,
+				});
 	</script>
 
 	<table class="table table-hover table-responsive">
