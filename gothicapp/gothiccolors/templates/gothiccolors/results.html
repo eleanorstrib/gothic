@@ -1,24 +1,46 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
+{% load humanize %}
 
 {% block content %}
-
-
 <link rel="stylesheet" href="../../../static/styles/colors_style.css">
 
-	Average percent color words: {{ avg_pct_color | floatformat:2 }}
-	Top 5 color words:
-	{% for item in most_used_color_words %}
-	 {{ item.0}} {{ item.1 }}
-	{% endfor %}
-  {{ data | length }} works <br />
+<div class="row">
+	<div class="col-xs-12 col-md-3">
+		Average percent color words: {{ avg_pct_color | floatformat:2 }}
+		Top 5 color words:
+		{% for item in most_used_color_words %}
+		 {{ item.0}} {{ item.1 }}
+		{% endfor %}
+	  {{ data | length }} works <br />
+	</div>
+	<div class="col-xs-12 col-md-9" align="center">
+		<canvas id="polarChart"></canvas>
+	</div>
+</div>
 
-	<canvas id="polarChart"></canvas>
-
-{{ chart_labels }}
+<!-- {{ chart_labels }}
 {{ chart_values }}
-{{ chart_hex }}
+{{ chart_hex }} -->
 	<table class="table table-hover table-responsive">
+		<tr>
+			<th>
+					Work
+				</th>
+				<th>
+					% Color words
+				</th>
+				<th>
+					Full list (#)
+				</th>
+				<th>
+					Color profile <a href="#" data-toggle="tooltip" data-placement="top" title="Each
+					block of color represents a mention of a color word, in order of occurrence in the text.  The word type
+					'A' stands for adjective, 'N for noun.
+					Hover over the color block for more information."><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a>
+				</th>
+		</tr>
 		{% for work in data %}
 		<tr>
 			<td class="col-xs-6 col-md-3">
@@ -29,7 +51,7 @@
 
 			<td class="col-xs-6 col-md-3">
 				{{ work.pct_color|floatformat:2 }}% <br />
-				color words
+				of {{ work.word_count | intcomma }} words
 			</td>
 
 			<td class="col-xs-6 col-md-3">
@@ -40,23 +62,28 @@
 
 			<td class="col-xs-6 col-md-3">
 				{% for item in work.cl %}
-						<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }}  |   Word Type: {{ item.1 | capfirst }}  |  Color family: {{ item.3 }}"></a>
-						<div class="color-square" style="background:{{ item.2 }}"></div>
+				<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }}  |   Word Type: {{ item.1 | capfirst }}  |  Color family: {{ item.3 }}">
+				<div class="color-square" style="background-color:{{ item.2 }} !important"></div>
+
 				{% endfor %}
 
 			</td>
 		</tr>
-  {% endfor %}
+  	{% endfor %}
 	</table>
 
 	<!-- JavaScript for color pages incl ChartJS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script>$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script>
 		var data = {
 		    datasets: [{
 		        data: {{ chart_values }},
-		        backgroundColor: ['white', 'black', 'lightgreen', 'red', 'lightseagreen', 'dimgrey', 'blue', 'green', 'gold', 'crimson'],
+		        backgroundColor: {{ chart_hex }},
 		        label: 'My dataset' // for legend
 		    }],
 		    labels: {{ chart_labels }}
@@ -75,12 +102,5 @@
 						}
 		});
 	</script>
-
-	<!--jQuery-->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-	<script>$(document).ready(function(){
-		$('[data-toggle="tooltip"]').tooltip();
-	});</script>
 
 {% endblock %}

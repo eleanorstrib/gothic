@@ -1,11 +1,10 @@
-body {
-	background-color: green;
-}
+
 canvas {
-	width: 50% !important;
-	height: 50% !important;
+	width: 75% !important;
+	height: 75% !important;
 }
 .color-square {
-	width: 10px !important;
+	width: 15px !important;
+	height: 15px !important;
 	float: left;
 }

@@ -17,6 +17,7 @@ def results(request):
     corpora = Corpus.objects.filter(period="Victorian")
     data = []
     color_big_list = []
+    lemmatizer = WordNetLemmatizer()
 
     for i in range(0, len(corpora)):
         if corpora[i].color_list != "[]":
@@ -40,16 +41,11 @@ def results(request):
 
             for color in new_dict['cl']:
                 color_name = color[0]
-                try:
-                    color_data = colors.filter(name=color_name)[0]
-                    color.append(color_data.hex_name)
-                    color.append(color_data.family)
-                except:
-                    lemmatizer = WordNetLemmatizer()
-                    color_name = lemmatizer.lemmatize(color_name)
-                    if colors.filter(name=color_name)[0]:
-                        color.append(color_data.hex_name)
-                        color.append(color_data.family)
+                color_name_lemm = lemmatizer.lemmatize(color_name)
+                color_data = colors.filter(name=color_name_lemm)[0]
+                color.append(color_data.hex_name)
+                color.append(color_data.family)
+
             data.append(new_dict)
 
     # summary data
@@ -59,10 +55,13 @@ def results(request):
     most_used_color_words = ((Counter(color_big_list)).most_common())[0:10]
     chart_labels = [value[0] for value in most_used_color_words]
     chart_values = [value[1] for value in most_used_color_words]
-    print (type(chart_values))
+    print (chart_labels)
     chart_hex = []
     for value in chart_labels:
-        hex_value = colors.filter(name=value)[0].hex_name
+        try:
+            hex_value = colors.filter(name=value)[0].hex_name
+        except:
+            hex_value = colors.filter(name=lemmatizer.lemmatize(value))[0].hex_name
         chart_hex.append(hex_value)
-
+    print(chart_labels, chart_values, chart_hex)
     return render(request, 'gothiccolors/results.html', {'data': data, 'avg_pct_color': avg_pct_color, 'most_used_color_words': most_used_color_words, 'chart_labels': mark_safe(chart_labels), 'chart_values': chart_values, 'chart_hex': mark_safe(chart_hex),})
