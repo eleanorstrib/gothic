@@ -7,7 +7,6 @@ cytoolz==0.8.2
 dill==0.2.6
 dj-database-url==0.4.2
 Django==1.11
-django-autocomplete-light==3.2.7
 gensim==0.13.4.1
 gunicorn==19.7.1
 murmurhash==0.26.4
@@ -36,6 +35,8 @@ thinc==6.5.2
 toolz==0.8.2
 tqdm==4.11.2
 ujson==1.35
+webcolors==1.7
+whitenoise==3.3.0
 wrapt==1.10.10
 zope.component==4.3.0
 zope.deprecation==4.2.0

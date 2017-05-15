@@ -18,7 +18,7 @@ for row in data_reader:
         color.year_first_used = row[1]
         color.family = row[2] # date in spreadhsheet
         color.hex_name = row[3]
-        color.url_value= row[4]
+        color.url_value = row[4]
         color.save()
         print("this record was saved: ", color.name)
     else:
