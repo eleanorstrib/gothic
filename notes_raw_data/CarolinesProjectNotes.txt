@@ -121,4 +121,32 @@ Stoker's Dracula: lots of red! Interesting to compare with Polidori.
 
 Jacobs's The Monkey's Paw refers to only one colour, white, and it does that 25 times! This is because all the main characters have the last name White. This is only a color word, though--it doesn't refer to anything else in English, so should we leave it as is, even though it's not being used as a reference to a color explicitly?
 
-Also worth noting that most of the color words are abstract, e.g., "red," "black," "blue," rather than attributive, e.g., "blood(y)," "sable," "azure". The vocab is not as "literary" as I'd expect.
+Also worth noting that most of the color words are abstract, e.g., "red," "black," "blue," rather than attributive, e.g., "blood(y)," "sable," "azure". The vocab is not as "literary" as I'd expect. The parodies, esp. The Heroine, do use a lot of literary words, though
+
+For our results, we decided to include nouns when they also appeared on our list of color adjectives, e.g., water, flame. Some of these nouns are used to describe color, “e.g., Frankenstein, “a lovely pink”. Others are used as nouns, but are closely associated with color. This is a decision that we debated back and forth, and including nouns may not be the right answer, esp. since a word like “water” is so common that it skews the results. Names are another issue: the name isabella is very common, but it is also a color word, referring to a greyish yellow. This sense was in use during the nineteenth century, but since it almost always/always refers to a name in our corpus, we left it out of our colour dictionary.
+
+What about the case of a construction like “black is the colour of my true love’s hair?” Black is being named, but it is a noun that is describing anouther noun, so acting like an adjective. One of the reasons we decided to include nouns in our analysis is because of this. We included only nouns that appear in our colour vocab, although theoretically, lots of others could connote/denote colour.
+
+We are trying to include some text context of 10 words on either side of a colour word so users can get a sense of how it is used without going back to the text.
+
+
+Attributive nouns and textures: Attributive nouns carry connotations of texture and detail, nuances of color. E.g., marble is not just one colour, but a mixture of colours and a texture. Since we can’t capture this with a hex value, we considered using images, but they wouldn’t render in our visualizations properly. In 2.0, we might include these in the page per text. Another consideration is that these colours are quite subjective, e.g., there are lots of different types of marble, lots of different colours in peacock blue, and in water. Any sample we use won’t do that colour justice. It would be interesting to examine when attributive nouns are used v. abstract ones, e.g., does the attributive quality matter? What does it mean in context? What is the effect of using attributive nouns v abstract ones? 
+
+Patterns in the vocab over time, e.g., more modern words seem to be related to food or technology.
+
+We’d like to create a page for each text that presents the data in more detail, incl. a timeline of how the colours change over time.
+
+
+
+This project is the first of its kind, and is meant as a starting point for research, another way of approaching these texts. A kind of deformative criticism: we’re pulling out color words and using them for interpretation, to represent the text. They are a small sample, almost always less than 1% of the text. 
+
+Example: vampire tales
+Romantic vampire tales (top row) are dominated by white, with just a bit of red. None of them refer to blood. (Reds wine, flame, crimson)
+Christabel: wine, red, flame
+Stagg’s “The Vampyre”: crimson
+Polidori’s “The Vampyre”: flame
+
+Victorian vampire tales (bottom row) are much more red.
+Varney uses “red,” “flame(s),” “sanguine,” “bloody,” but most references are to “wine”
+Carmilla uses “crimson” and “scarlet” (no blood)
+Dracula uses mostly “red,” but also “flame(s),” “rusty,” “wine,” “bloody,” “crimson,” “scarlet,” “sanguine,” “cardinal,” “ruby,” “reddish”—a very rich palette dominated by red and white.
