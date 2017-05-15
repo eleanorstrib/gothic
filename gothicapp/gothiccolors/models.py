@@ -29,6 +29,7 @@ class Corpus(models.Model):
         ('Pre-Romantic', 'Pre-Romantic'),
         ('Romantic', 'Romantic'),
         ('Victorian', 'Victorian'),
+        ('', 'Uncategorized'),
     )
     ROLE_CHOICES = (
         ('Central', 'Central'),
