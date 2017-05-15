@@ -1,0 +1,10 @@
+
+canvas {
+	width: 70% !important;
+	height: 70% !important;
+}
+.color-square {
+	width: 15px;
+	height: 15px;
+	float: left;
+}
