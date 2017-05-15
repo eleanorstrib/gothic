@@ -3,5 +3,13 @@
 
 
 {% block content %}
-this is home
+<form action="/results/" id="period-search" method="GET">
+		<table>
+			<tbody>
+				{{ form.as_table }}
+			</tbody>
+		</table>
+			<p>&nbsp</p>
+			<p><button type="submit" class="btn btn-custom">submit</button></p>
+</form>
 {% endblock %}

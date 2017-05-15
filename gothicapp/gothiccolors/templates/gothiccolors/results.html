@@ -8,6 +8,7 @@
 
 <div class="row">
 	<div class="col-xs-12 col-md-3">
+		{% if user_period_search == ''%}Uncategorized{% endif %}
 		Average percent color words: {{ avg_pct_color | floatformat:2 }}
 		Top 5 color words:
 		{% for item in most_used_color_words %}
