@@ -1,12 +1,12 @@
 import django
-import json
-from ast import literal_eval
-from django.conf import settings
-from datetime import datetime
+import sys
+import os
 import csv
+from ast import literal_eval
+from datetime import datetime
+# from django.conf import settings
 
 
-import sys, os
 sys.path.append('/Users/eleanorstrib/Documents/dev_projects/gothic_colors/gothicapp/')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'gothicapp.settings'
 
@@ -19,7 +19,6 @@ with open('./gothic_texts.csv') as data_file:
     for row in data_reader:
         if row[0] != 'Title': #skip header row
             corpus = Corpus()  # instantiate the class
-            print(corpus.title)
             corpus.title = row[0]
             corpus.author = row[1]
             corpus.year = row[2] # date in spreadhsheet

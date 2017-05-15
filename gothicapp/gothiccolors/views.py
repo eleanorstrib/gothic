@@ -64,4 +64,7 @@ def results(request):
             hex_value = colors.filter(name=lemmatizer.lemmatize(value))[0].hex_name
         chart_hex.append(hex_value)
     print(chart_labels, chart_values, chart_hex)
-    return render(request, 'gothiccolors/results.html', {'data': data, 'avg_pct_color': avg_pct_color, 'most_used_color_words': most_used_color_words, 'chart_labels': mark_safe(chart_labels), 'chart_values': chart_values, 'chart_hex': mark_safe(chart_hex),})
+    return render(request, 'gothiccolors/results.html', {
+            'data': data, 'avg_pct_color': avg_pct_color, 'most_used_color_words': most_used_color_words,
+            'chart_labels': mark_safe(chart_labels), 'chart_values': chart_values,
+            'chart_hex': mark_safe(chart_hex),})

@@ -1,10 +1,10 @@
 
 canvas {
-	width: 75% !important;
-	height: 75% !important;
+	width: 70% !important;
+	height: 70% !important;
 }
 .color-square {
-	width: 15px !important;
-	height: 15px !important;
+	width: 15px;
+	height: 15px;
 	float: left;
 }
