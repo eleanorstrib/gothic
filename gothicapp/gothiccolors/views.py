@@ -20,7 +20,7 @@ def home(request):
 
 def results(request):
     if request.method == 'GET':
-        user_period_search = request.GET.get('period','')
+        user_period_search = request.GET.get('period', '')
         colors = Color.objects.all()
         corpora = Corpus.objects.filter(period=user_period_search)
         data = []
@@ -73,8 +73,11 @@ def results(request):
             chart_hex.append(hex_value)
 
         return render(request, 'gothiccolors/results.html', {
-                'data': data, 'avg_pct_color': avg_pct_color, 'most_used_color_words': most_used_color_words,
-                'chart_labels': mark_safe(chart_labels), 'chart_values': chart_values,
-                'chart_hex': mark_safe(chart_hex), 'user_period_search': user_period_search, })
+                'data': data, 'avg_pct_color': avg_pct_color,
+                'most_used_color_words': most_used_color_words,
+                'chart_labels': mark_safe(chart_labels),
+                'chart_values': chart_values,
+                'chart_hex': mark_safe(chart_hex),
+                'user_period_search': user_period_search, })
     else:
-        return(HttpResponseRedirect, 'gothiccolors/home.html')
+        return HttpResponseRedirect("There was an error. Please try again.")
