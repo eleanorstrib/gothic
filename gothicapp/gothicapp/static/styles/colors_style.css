@@ -8,3 +8,22 @@ canvas {
 	height: 15px;
 	float: left;
 }
+.header-row-padded {
+  padding-bottom: 30px;
+}
+.byline {
+  color: gray;
+  font-size: 0.75em;
+  font-weight: bolder;
+}
+.percentage {
+  font-weight: lighter;
+  font-size: 1.35em;
+}
+.table>tbody>tr>td{
+  padding: 20px;
+}
+.title {
+  font-size: 1.35em;
+  font-weight: bolder;
+}

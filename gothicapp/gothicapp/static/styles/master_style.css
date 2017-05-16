@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua|Lato|Quicksand:300');
+/*font-family: 'Inknut Antiqua', 'Times New Roman', serif;
+font-family: 'Lato', 'Helvetica', sans-serif;
+font-family: 'Quicksand', 'Arial', sans-serif;*/
+
+nav.navbar.navbar-inverse {
+    border-radius: 0;
+		font-family: 'Inknut Antiqua', 'Times New Roman', serif;
+    margin-bottom: 0;
+}
+
+body {
+	font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+.heading {
+	font-family: 'Quicksand', 'Arial', sans-serif;
+	padding: 30px;
+}
+
+td {
+	margin: 15px;
+}
+
+.sm-caps {
+	font-variant: small-caps;
+	font-size: 0.8em;
+}
+
+.purple-text {
+	font-color: #68228B;
+}

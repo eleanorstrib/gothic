@@ -4,26 +4,31 @@
 {% load humanize %}
 
 {% block content %}
+<link rel="stylesheet" href="../../../static/styles/master_style.css">
 <link rel="stylesheet" href="../../../static/styles/colors_style.css">
 
-<div class="row">
+<div class="row header-row-padded">
 	<div class="col-xs-12 col-md-3">
-		{% if user_period_search == ''%}Uncategorized{% endif %}
-		Average percent color words: {{ avg_pct_color | floatformat:2 }}
-		Top 5 color words:
-		{% for item in most_used_color_words %}
-		 {{ item.0}} {{ item.1 }}
-		{% endfor %}
-	  {{ data | length }} works <br />
+		<span class="heading">
+			<p><h3>Results for {% if user_period_search == ''%}Uncategorized {% else %} {{ user_period_search }} {% endif %}</p>
+		</span>
+			<p><h5>{{ data | length }} works </p>
+			<p>{{ avg_pct_color | floatformat:2 }}% color words (average)</h5></p><br /><br />
+			<p>Top color words:
+				<ul>
+						{% for item in most_used_color_words %}
+							<li>{{ item.0}} - {{ item.1 }}</li>
+						{% endfor %}
+				<ul>
+			</p>
+
+
 	</div>
 	<div class="col-xs-12 col-md-9" align="center">
 		<canvas id="polarChart"></canvas>
 	</div>
 </div>
 
-<!-- {{ chart_labels }}
-{{ chart_values }}
-{{ chart_hex }} -->
 	<table class="table table-hover table-responsive">
 		<tr>
 			<th>
@@ -44,24 +49,26 @@
 		</tr>
 		{% for work in data %}
 		<tr>
-			<td class="col-xs-6 col-md-3">
-				{{ work.title }} ({{ work.year }})<br />
-				by {{ work.author }} <br />
-				{{ work.period | default:"n/a" }} | {{ work.mode | default:"n/a" }} | {{ work.role | default:"n/a" }} | {{ work.nationality | default:"n/a" }}
+			<td class="col-xs-3 col-md-3">
+				<span class="title">{{ work.title }}</span>  ({{ work.year }})<br />
+				<span class="byline">by {{ work.author }}</span><br />
+				<span class="sm-caps purple-text">
+						{{ work.period | default:"n/a" }} | {{ work.mode | default:"n/a" }} | {{ work.role | default:"n/a" }} | {{ work.nationality | default:"n/a" }}
+				</span>
 			</td>
 
-			<td class="col-xs-6 col-md-3">
-				{{ work.pct_color|floatformat:2 }}% <br />
+			<td class="col-xs-1 col-md-2" align="center">
+				<span class = "percentage">{{ work.pct_color|floatformat:2 }}%</span> <br />
 				of {{ work.word_count | intcomma }} words
 			</td>
 
-			<td class="col-xs-6 col-md-3">
+			<td class="col-xs-3 col-md-3">
 				{% for color in work.cd %}
 					{{ color.0 }} ({{ color.1 }})
 				{% endfor %}
 			</td>
 
-			<td class="col-xs-6 col-md-3">
+			<td class="col-xs-4 col-md-4">
 				{% for item in work.cl %}
 				<a href="#" data-toggle="tooltip" data-placement="top" title="Word: {{ item.0 }}  |   Word Type: {{ item.1 | capfirst }}  |  Color family: {{ item.3 }}">
 				<div class="color-square" style="background-color:{{ item.2 }} !important"></div>
@@ -95,6 +102,9 @@
 					data: data,
 					type: "polarArea",
 					options: {
+						legend: {
+	             display: false
+	          },
 						elements: {
 								arc: {
 									borderColor: "#000000"
