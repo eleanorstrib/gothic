@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua|Lato|Quicksand:300');
+body, html {
+    height: 100%;
+}
+
+.jumbotron {
+    background-image: url("https://ka-perseus-images.s3.amazonaws.com/879405f4da1b827696ec823f5683e8d7be1abc07.jpg");
+
+    width: 100%;
+    height: 100vh;
+    background-size: cover !important;
+    overflow: hidden;
+    margin-bottom: 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #663366;
+    font-family:'Inknut Antiqua', 'Times New Roman', serif;
+    font-size: 1em;
+}
+
+ul.errorList, li{
+  display: none;
+}
+
+.btn {
+  background-color: #663366;
+  font-family:'Inknut Antiqua', 'Times New Roman', serif;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+.btn:hover {
+  background-color: black;
+  color: #663366;
+}
