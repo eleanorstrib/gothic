@@ -13,12 +13,9 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["salty-wave-23247.herokuapp.com", "localhost"]
-
-
-# Application definition
+ALLOWED_HOSTS = ["afternoon-taiga-69837.herokuapp.com", "localhost"]
 
 INSTALLED_APPS = [
     'gothiccolors',
