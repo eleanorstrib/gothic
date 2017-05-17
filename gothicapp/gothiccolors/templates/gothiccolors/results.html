@@ -91,10 +91,9 @@
 		var data = {
 		    datasets: [{
 		        data: {{ chart_values }},
-		        backgroundColor: {{ chart_hex }},
-		        label: 'My dataset' // for legend
+		        backgroundColor: {{ chart_hex | safe }},
 		    }],
-		    labels: {{ chart_labels }}
+		    labels: {{ chart_labels | safe }}
 		};
 		var ctx = document.getElementById('polarChart').getContext('2d');
 
