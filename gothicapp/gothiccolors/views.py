@@ -75,9 +75,9 @@ def results(request):
         return render(request, 'gothiccolors/results.html', {
                 'data': data, 'avg_pct_color': avg_pct_color,
                 'most_used_color_words': most_used_color_words,
-                'chart_labels': chart_labels,
+                'chart_labels': json.dumps(chart_labels),
                 'chart_values': chart_values,
-                'chart_hex': chart_hex,
+                'chart_hex': json.dumps(chart_hex),
                 'user_period_search': user_period_search, })
     else:
         return HttpResponseRedirect("There was an error. Please try again.")
