@@ -5,6 +5,7 @@ import operator
 
 from nltk.stem import WordNetLemmatizer
 from django.shortcuts import render
+# from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
 from .forms import PeriodSearchForm
 from .models import Corpus, Color
