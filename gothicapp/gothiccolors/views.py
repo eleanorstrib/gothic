@@ -28,7 +28,7 @@ def results(request):
         lemmatizer = WordNetLemmatizer()
 
         for i in range(0, len(corpora)):
-            if corpora[i].color_list != "[]":
+            if corpora[i].color_list != "[]" and corpora[i].color_dict != {}:
                 new_dict = {}
                 cd = json.loads(corpora[i].color_dict)
                 cd_list = sorted(cd.items(), key=operator.itemgetter(1), reverse=True)
@@ -44,7 +44,7 @@ def results(request):
                 new_dict['period'] = corpora[i].period
                 new_dict['role'] = corpora[i].role
                 new_dict['word_count'] = corpora[i].word_count
-                new_dict['pct_color'] = (len(cl)/(corpora[i].word_count))*100
+                new_dict['pct_color'] = len(cl)/(int(corpora[i].word_count))*100
 
 
                 for color in new_dict['cl']:
@@ -60,6 +60,7 @@ def results(request):
         num_records = len(corpora)
         list_pct_color_words = [item['pct_color'] for item in data]
         avg_pct_color = (sum(list_pct_color_words)/num_records)
+        print(avg_pct_color)
         most_used_color_words = ((Counter(color_big_list)).most_common())[0:10]
         chart_labels = [value[0] for value in most_used_color_words]
         chart_values = [value[1] for value in most_used_color_words]

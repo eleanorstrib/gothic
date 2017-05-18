@@ -13,7 +13,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'gothicapp.settings'
 django.setup()
 from gothiccolors.models import Corpus
 
-with open('./gothic_texts.csv') as data_file:
+with open('./final_gothic_data.csv') as data_file:
     data_reader = csv.reader(data_file, delimiter=",")
 
     for row in data_reader:
@@ -42,9 +42,10 @@ with open('./gothic_texts.csv') as data_file:
             corpus.date_accessed = row[24]
             corpus.editor = row[25]
             corpus.edition = row[26]
+            corpus.word_count = row[29]
             try:
-                color_list = row[27].strip("'<>() ").replace('\'', '\"')
-                color_dict = row[28].strip("'<>() ").replace('\'', '\"')
+                color_list = row[28].strip("'<>() ").replace('\'', '\"')
+                color_dict = row[27].strip("'<>() ").replace('\'', '\"')
                 corpus.color_list = literal_eval(color_list)
                 corpus.color_dict = literal_eval(color_dict)
                 corpus.save()
