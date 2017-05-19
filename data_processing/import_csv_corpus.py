@@ -13,7 +13,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'gothicapp.settings'
 django.setup()
 from gothiccolors.models import Corpus
 
-with open('./final_gothic_data.csv') as data_file:
+with open('./final_gothic_missing.csv') as data_file:
     data_reader = csv.reader(data_file, delimiter=",")
 
     for row in data_reader:
@@ -45,13 +45,17 @@ with open('./final_gothic_data.csv') as data_file:
             corpus.word_count = row[29]
             try:
                 color_list = row[28].strip("'<>() ").replace('\'', '\"')
-                color_dict = row[27].strip("'<>() ").replace('\'', '\"')
                 corpus.color_list = literal_eval(color_list)
-                corpus.color_dict = literal_eval(color_dict)
-                corpus.save()
+
                 print("this record was saved: ", corpus.title)
             except:
-                print("problem at", corpus.title)
+                print("problem with color list at", corpus.title)
+            try:
+                color_dict = row[27].strip("'<>() ").replace('\'', '\"')
+                corpus.color_dict = literal_eval(color_dict)
+            except:
+                print("problem with color dic at", corpus.title)
+            corpus.save()
         else:
             print('skipping row')
     print("done")
