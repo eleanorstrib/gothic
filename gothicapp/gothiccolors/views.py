@@ -7,22 +7,27 @@ from nltk.stem import WordNetLemmatizer
 from django.shortcuts import render
 # from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
-from .forms import PeriodSearchForm
+from django import forms
+from .forms import AuthorSearchForm
 from .models import Corpus, Color
 
 
 def home(request):
     if request.method == 'GET':
-        form = PeriodSearchForm(request.GET)
+        form = AuthorSearchForm(request.GET)
+        authors = set(Corpus.objects.values_list('author', flat=True).order_by('author'))
+        AuthorSearchForm.base_fields['author'] = forms.ModelChoiceField(
+                queryset=Corpus.objects.values_list('author',flat=True).exclude(filename__exact='').distinct().order_by('author')
+                )
     else:
-        form = PeriodSearchForm()
-    return render(request, 'gothiccolors/home.html', {'form': form})
+        form = AuthorSearchForm()
+    return render(request, 'gothiccolors/home.html', {'form': form, 'authors': authors})
 
 def results(request):
     if request.method == 'GET':
-        user_period_search = request.GET.get('period', '')
+        user_period_search = request.GET.get('author', '')
         colors = Color.objects.all()
-        corpora = Corpus.objects.filter(period=user_period_search)
+        corpora = Corpus.objects.filter(author=user_period_search)
         data = []
         color_big_list = []
         lemmatizer = WordNetLemmatizer()
@@ -60,7 +65,6 @@ def results(request):
         num_records = len(corpora)
         list_pct_color_words = [item['pct_color'] for item in data]
         avg_pct_color = (sum(list_pct_color_words)/num_records)
-        print(avg_pct_color)
         most_used_color_words = ((Counter(color_big_list)).most_common())[0:10]
         chart_labels = [value[0] for value in most_used_color_words]
         chart_values = [value[1] for value in most_used_color_words]

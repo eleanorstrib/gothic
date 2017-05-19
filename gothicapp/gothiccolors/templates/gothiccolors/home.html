@@ -12,18 +12,17 @@
   <div class="hero-text">
 		<p><h2>gothic literature was never<br />black & white</h2></p>
 		<br /><br />
-		<form action="/results/" id="period-search" method="GET">
+		<form action="/results/" id="author-search" method="GET">
 				<p><table>
 					<tbody>
-						<label for="{{ form.period.id_for_label }}">select period</label>&nbsp&nbsp
-							{{ form.period }}
+						<label for="{{ form.author.id_for_label }}">select author<label>&nbsp&nbsp
+							{{ form.author }}
 						</label>
 						&nbsp&nbsp<button type="submit" class="btn btn-custom">go</button>
 					</tbody>
 				</table></p>
 			</div>
-		</form
-
+		</form>
 </div>
 
 {% endblock %}
