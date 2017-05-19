@@ -10,7 +10,7 @@
 <div class="row header-row-padded">
 	<div class="col-xs-12 col-md-3">
 		<span class="heading">
-			<p><h3>Results for {% if user_period_search == ''%}Uncategorized {% else %} {{ user_period_search }} {% endif %}</p>
+			<p><h3>Results for {% if user_author_search == ''%}Uncategorized {% else %} {{ user_author_search }} {% endif %}</p>
 		</span>
 			<p><h5>{{ data | length }} works </p>
 			<p>{{ avg_pct_color | floatformat:2 }}% color words (average)</h5></p><br /><br />
