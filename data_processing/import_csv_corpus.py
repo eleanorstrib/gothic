@@ -18,6 +18,7 @@ with open('./final_gothic_missing.csv') as data_file:
 
     for row in data_reader:
         if row[0] != 'Title': #skip header row
+            print(row[0])
             corpus = Corpus()  # instantiate the class
             corpus.title = row[0]
             corpus.author = row[1]

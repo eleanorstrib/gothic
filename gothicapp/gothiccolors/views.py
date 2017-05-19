@@ -25,7 +25,7 @@ def home(request):
 
 def results(request):
     if request.method == 'GET':
-        user_period_search = request.GET.get('author', '')
+        user_author_search = request.GET.get('author', '')
         colors = Color.objects.all()
         corpora = Corpus.objects.filter(author=user_period_search)
         data = []
