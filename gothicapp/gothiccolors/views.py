@@ -27,7 +27,7 @@ def results(request):
     if request.method == 'GET':
         user_author_search = request.GET.get('author', '')
         colors = Color.objects.all()
-        corpora = Corpus.objects.filter(author=user_period_search)
+        corpora = Corpus.objects.filter(author=user_author_search)
         data = []
         color_big_list = []
         lemmatizer = WordNetLemmatizer()
@@ -83,6 +83,6 @@ def results(request):
                 'chart_labels': json.dumps(chart_labels),
                 'chart_values': chart_values,
                 'chart_hex': json.dumps(chart_hex),
-                'user_period_search': user_period_search, })
+                'user_author_search': user_author_search, })
     else:
         return HttpResponseRedirect("There was an error. Please try again.")
