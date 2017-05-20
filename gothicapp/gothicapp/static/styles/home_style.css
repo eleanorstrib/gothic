@@ -4,9 +4,9 @@ body, html {
 }
 
 .jumbotron {
-    background-image: url("https://ka-perseus-images.s3.amazonaws.com/879405f4da1b827696ec823f5683e8d7be1abc07.jpg");
+    background-image: url("../img/prism_web.jpg");
 
-    width: 100%;
+    width: 100% !important;
     height: 100vh;
     background-size: cover !important;
     overflow: hidden;
@@ -15,7 +15,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    padding: 0;
+    padding: 0 !important;
 }
 
 .hero-text {
@@ -24,7 +24,7 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #663366;
+    color: black;
     font-family:'Inknut Antiqua', 'Times New Roman', serif;
     font-size: 1em;
 }
@@ -39,6 +39,7 @@ ul.errorList, li{
   width: 50px;
   height: 50px;
   border-radius: 50px;
+  color: white;
 }
 .btn:hover {
   background-color: black;

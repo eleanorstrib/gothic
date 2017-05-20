@@ -1,11 +1,12 @@
 from collections import Counter
+from functools import reduce
+from operator import add
 import json
 import nltk
 import operator
 
 from nltk.stem import WordNetLemmatizer
 from django.shortcuts import render
-# from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
 from django import forms
 from .forms import AuthorSearchForm
@@ -22,6 +23,42 @@ def home(request):
     else:
         form = AuthorSearchForm()
     return render(request, 'gothiccolors/home.html', {'form': form, 'authors': authors})
+
+
+def all_colors(request):
+    colors = Color.objects.all()
+    all_color_dict = {}
+    total_color_words = 0
+    lemmatizer = WordNetLemmatizer()
+
+    all_dicts= Corpus.objects.values_list('color_dict', flat=True).exclude(filename__exact='')
+
+    for item in all_dicts:
+        j = json.loads(item)
+        for k, v in j.items():
+            total_color_words += v
+            if k in all_color_dict:
+                all_color_dict[k][0] = all_color_dict[k][0] + v
+            else:
+                try:
+                    color_data = colors.filter(name=k)[0]
+                except:
+                    color_name_lemm = lemmatizer.lemmatize(k)
+                    color_data = colors.filter(name=color_name_lemm)[0]
+                hex_name = color_data.hex_name
+                all_color_dict[k] = [v, hex_name]
+
+    all_color_dict = sorted(all_color_dict.items(), key=operator.itemgetter(0))
+    unique_color_words = len(all_color_dict)
+    potential_color_words = len(colors)
+
+    return render(request, 'gothiccolors/all_colors.html', {
+            'all_color_dict': all_color_dict,
+            'total_color_words': total_color_words,
+            'unique_color_words': unique_color_words,
+            'potential_color_words': potential_color_words
+            })
+
 
 def results(request):
     if request.method == 'GET':
