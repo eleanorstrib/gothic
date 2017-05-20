@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<link rel="stylesheet" href="../../../static/styles/master_style.css">
+
+
+<div class = "container">
+    <div class="row" style="height: 300px;" align="center">
+      <h2 class="heading">The Full Palette</h2>
+      <p>There were a total of {{ total_color_words | intcomma }} color words
+        across the texts we studied.</p>
+      <p>Of these, {{ unique_color_words }} were unique.</p>
+      <p>Our original color list via the Oxford English Dictionary included
+        {{ potential_color_words | intcomma  }} color words.</p>
+    </div>
+    <div class="row" style="height: 65px;">
+      {% for item in all_color_dict %}
+      <div class="col-xs-6 col-md-2"  align="center">
+        <div class="color-square" style="background-color:{{ item.1.1 }} !important;
+        width: 15px; height: 15px; box-shadow: 3px 3px lightgrey; margin: auto; width: 30%;"></div>
+        &nbsp&nbsp{{ item.0 }} ({{ item.1.0 }})
+      </div>
+      {% if forloop.counter|divisibleby:"4" or forloop.last %}
+    </div>
+    {% endif %}
+      {% endfor %}
+</div>
+{% endblock %}

@@ -13,6 +13,15 @@ body {
 	font-family: 'Lato', 'Helvetica', sans-serif;
 }
 
+footer {
+  background: #663366;
+  height: 100px;
+  padding: 30px;
+  color: white;
+  font-family: 'Inknut Antiqua', 'Times New Roman', serif;
+  text-align: center;
+}
+
 .heading {
 	font-family: 'Quicksand', 'Arial', sans-serif;
 	padding: 30px;
