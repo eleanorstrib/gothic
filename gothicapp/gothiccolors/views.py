@@ -1,10 +1,8 @@
-from collections import Counter
-from functools import reduce
-from operator import add
 import json
 import nltk
 import operator
 
+from collections import Counter
 from nltk.stem import WordNetLemmatizer
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -89,6 +87,7 @@ def results(request):
                 new_dict['pct_color'] = len(cl)/(int(corpora[i].word_count))*100
 
 
+
                 for color in new_dict['cl']:
                     color_name = color[0]
                     color_name_lemm = lemmatizer.lemmatize(color_name)
@@ -101,7 +100,7 @@ def results(request):
         # summary data
         num_records = len(corpora)
         list_pct_color_words = [item['pct_color'] for item in data]
-        avg_pct_color = (sum(list_pct_color_words)/num_records)
+        avg_pct_color = str(sum(list_pct_color_words)/num_records)
         most_used_color_words = ((Counter(color_big_list)).most_common())[0:10]
         chart_labels = [value[0] for value in most_used_color_words]
         chart_values = [value[1] for value in most_used_color_words]
