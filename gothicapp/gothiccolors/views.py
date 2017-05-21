@@ -112,7 +112,7 @@ def results(request):
             except:
                 hex_value = colors.filter(name=lemmatizer.lemmatize(value))[0].hex_name
             chart_hex.append(hex_value)
-
+            print(avg_pct_color)
         return render(request, 'gothiccolors/results.html', {
                 'data': data, 'avg_pct_color': avg_pct_color,
                 'most_used_color_words': most_used_color_words,

@@ -9,12 +9,12 @@
 
 <div class="container">
 <div class="row header-row-padded">
-	<div class="col-xs-12 col-md-3">
+	<div class="col-xs-12 col-md-4">
 		<span class="heading">
-			<p><h3>Results for {% if user_author_search == ''%}Uncategorized {% else %} {{ user_author_search }} {% endif %}</p>
+			<p><h3>Results for <br />{% if user_author_search == ''%}Uncategorized {% else %} {{ user_author_search }} {% endif %}</p>
 		</span>
 			<p><h5>{{ data | length }} works </p>
-			<p>{{ avg_pct_color|floatformat:"2" }}% color words (average)</h5></p><br /><br />
+			<p>{{ avg_pct_color|floatformat:"2" }} percent color words (average)</h5></p><br /><br />
 			<p>Top color words:
 				<ul>
 						{% for item in most_used_color_words %}
@@ -25,7 +25,7 @@
 
 
 	</div>
-	<div class="col-xs-12 col-md-9" align="center">
+	<div class="col-xs-12 col-md-8" align="center">
 		<canvas id="polarChart"></canvas>
 	</div>
 </div>
@@ -59,7 +59,7 @@
 			</td>
 
 			<td class="col-xs-1 col-md-2" align="center">
-				<span class = "percentage">{{ work.pct_color|floatformat:"2" }}%</span> <br />
+				<span class = "percentage">{{ work.pct_color|floatformat:"2" }} %</span> <br />
 				of {{ work.word_count | intcomma }} words
 			</td>
 
