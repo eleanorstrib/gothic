@@ -14,7 +14,7 @@
 			<p><h3>Results for <br />{% if user_author_search == ''%}Uncategorized {% else %} {{ user_author_search }} {% endif %}</p>
 		</span>
 			<p><h5>{{ data | length }} works </p>
-			<p>{{ avg_pct_color|floatformat:"2" }} percent color words (average)</h5></p><br /><br />
+			<!-- <p>{{ avg_pct_color|floatformat:"2" }} percent color words (average)</h5></p><br /><br /> -->
 			<p>Top color words:
 				<ul>
 						{% for item in most_used_color_words %}
@@ -35,9 +35,9 @@
 			<th>
 					Work
 				</th>
-				<th>
+				<!-- <th>
 					% Color words
-				</th>
+				</th> -->
 				<th>
 					Full list (#)
 				</th>
@@ -50,7 +50,7 @@
 		</tr>
 		{% for work in data %}
 		<tr>
-			<td class="col-xs-3 col-md-3">
+			<td class="col-xs-4 col-md-5">
 				<span class="title">{{ work.title }}</span>  ({{ work.year }})<br />
 				<span class="byline">by {{ work.author }}</span><br />
 				<span class="sm-caps purple-text">
@@ -58,12 +58,12 @@
 				</span>
 			</td>
 
-			<td class="col-xs-1 col-md-2" align="center">
+			<!-- <td class="col-xs-1 col-md-2" align="center">
 				<span class = "percentage">{{ work.pct_color|floatformat:"2" }} %</span> <br />
 				of {{ work.word_count | intcomma }} words
-			</td>
+			</td> -->
 
-			<td class="col-xs-3 col-md-3">
+			<td class="col-xs-4 col-md-3">
 				{% for color in work.cd %}
 					{{ color.0 }} ({{ color.1 }})
 				{% endfor %}
