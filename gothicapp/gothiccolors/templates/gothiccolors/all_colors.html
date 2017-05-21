@@ -16,14 +16,14 @@
       <p>Our original color list via the Oxford English Dictionary included
         {{ potential_color_words | intcomma  }} color words.</p>
     </div>
-    <div class="row" style="height: 65px;">
+    <div class="row" style="height: 150px;">
       {% for item in all_color_dict %}
-      <div class="col-xs-6 col-md-2"  align="center">
-        <div class="color-square" style="background-color:{{ item.1.1 }} !important;
-        width: 15px; height: 15px; box-shadow: 3px 3px lightgrey; margin: auto; width: 30%;"></div>
-        &nbsp&nbsp{{ item.0 }} ({{ item.1.0 }})
+      <div class="col-md-2"  align="center">
+        <div class="color-square" style="background-color:{{ item.1.1 }};
+        width: 15px; height: 30px; box-shadow: 3px 3px lightgrey; margin: auto; width: 30%;"></div>
+        &nbsp&nbsp{{ item.0 }} ({{ item.1.0 }})<br />
       </div>
-      {% if forloop.counter|divisibleby:"4" or forloop.last %}
+      {% if forloop.counter|divisibleby:"0" or forloop.last %}
     </div>
     {% endif %}
       {% endfor %}

@@ -8,20 +8,10 @@ nav.navbar.navbar-inverse {
 		font-family: 'Inknut Antiqua', 'Times New Roman', serif;
     margin-bottom: 0;
 }
-
 body {
 	font-family: 'Lato', 'Helvetica', sans-serif;
+  padding-bottom: 50px;
 }
-
-footer {
-  background: #663366;
-  height: 100px;
-  padding: 30px;
-  color: white;
-  font-family: 'Inknut Antiqua', 'Times New Roman', serif;
-  text-align: center;
-}
-
 .heading {
 	font-family: 'Quicksand', 'Arial', sans-serif;
 	padding: 30px;
@@ -30,12 +20,10 @@ footer {
 td {
 	margin: 15px;
 }
-
 .sm-caps {
 	font-variant: small-caps;
 	font-size: 0.8em;
 }
-
 .purple-text {
 	font-color: #68228B;
 }
