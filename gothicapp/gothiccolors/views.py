@@ -84,7 +84,7 @@ def results(request):
                 new_dict['period'] = corpora[i].period
                 new_dict['role'] = corpora[i].role
                 new_dict['word_count'] = corpora[i].word_count
-                new_dict['pct_color'] = len(cl)/(int(corpora[i].word_count))*100
+                # new_dict['pct_color'] = len(cl)/(int(corpora[i].word_count))*100
 
 
 
@@ -99,8 +99,8 @@ def results(request):
 
         # summary data
         num_records = len(corpora)
-        list_pct_color_words = [item['pct_color'] for item in data]
-        avg_pct_color = str(sum(list_pct_color_words)/num_records)
+        # list_pct_color_words = [item['pct_color'] for item in data]
+        # avg_pct_color = str(sum(list_pct_color_words)/num_records)
         most_used_color_words = ((Counter(color_big_list)).most_common())[0:10]
         chart_labels = [value[0] for value in most_used_color_words]
         chart_values = [value[1] for value in most_used_color_words]
@@ -112,9 +112,10 @@ def results(request):
             except:
                 hex_value = colors.filter(name=lemmatizer.lemmatize(value))[0].hex_name
             chart_hex.append(hex_value)
-            print(avg_pct_color)
+
         return render(request, 'gothiccolors/results.html', {
-                'data': data, 'avg_pct_color': avg_pct_color,
+                'data': data,
+                # 'avg_pct_color': avg_pct_color,
                 'most_used_color_words': most_used_color_words,
                 'chart_labels': json.dumps(chart_labels),
                 'chart_values': chart_values,
