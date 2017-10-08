@@ -40,6 +40,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- Chartjs -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
-    <script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});</script>
+    <script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});
+      $.ajax({
+        url: '/form_author/',
+        datatype:"json",
+        success: function(data) {
+          for (i = 0; i < data.length; i++)
+          console.log(data[i]);
+        }
+      });
+    </script>
 </body>
 </html>
