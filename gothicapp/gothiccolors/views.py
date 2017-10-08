@@ -4,8 +4,9 @@ import operator
 
 from collections import Counter
 from nltk.stem import WordNetLemmatizer
+# from json import dumps, loads, PythonObjectEncoder
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect
 from django import forms
 from .forms import AuthorSearchForm
 from .models import Corpus, Color
@@ -15,6 +16,7 @@ def home(request):
     if request.method == 'GET':
         form = AuthorSearchForm(request.GET)
         authors = set(Corpus.objects.values_list('author', flat=True).order_by('author'))
+        print (authors)
         AuthorSearchForm.base_fields['author'] = forms.ModelChoiceField(
                 queryset=Corpus.objects.values_list('author',flat=True).exclude(filename__exact='').distinct().order_by('author')
                 )
@@ -22,6 +24,10 @@ def home(request):
         form = AuthorSearchForm()
     return render(request, 'gothiccolors/home.html', {'form': form, 'authors': authors})
 
+def form_author(request):
+        authors = list(set(Corpus.objects.values_list('author', flat=True).order_by('author')))
+        print(type(authors))
+        return JsonResponse(authors, safe=False)
 
 def all_colors(request):
     colors = Color.objects.all()

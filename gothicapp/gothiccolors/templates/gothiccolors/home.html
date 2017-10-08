@@ -12,17 +12,23 @@
   <div class="hero-text">
 		<p><h2>gothic literature was never<br />black & white</h2></p>
 		<br /><br />
-		<form action="/results/" id="author-search" method="GET">
+		<form action="/results/" id="author-search" method="GET">{% csrf_token %}
 				<p><table>
 					<tbody>
 						<label for="{{ form.author.id_for_label }}">select an author<label>&nbsp&nbsp
-							{{ form.author }}
+							<div id="form-author">{{ form.author }}</form>
 						</label>
 						&nbsp&nbsp<button type="submit" class="btn btn-custom">go</button>
 					</tbody>
 				</table></p>
 			</div>
 		</form>
-</div>
 
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+  alert("hi there!");
+  // $("#form-author").load("demo_test.txt");
+</script>
 {% endblock %}
