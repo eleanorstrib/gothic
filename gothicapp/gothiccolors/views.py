@@ -13,11 +13,12 @@ from .models import Corpus, Color
 
 def home(request):
     if request.method == 'GET':
-        form = AuthorSearchForm(request.GET)
         authors = set(Corpus.objects.values_list('author', flat=True).order_by('author'))
         AuthorSearchForm.base_fields['author'] = forms.ModelChoiceField(
                 queryset=Corpus.objects.values_list('author',flat=True).exclude(filename__exact='').distinct().order_by('author')
                 )
+        form = AuthorSearchForm(request.GET)
+
     else:
         form = AuthorSearchForm()
     return render(request, 'gothiccolors/home.html', {'form': form, 'authors': authors})
